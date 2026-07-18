@@ -9,5 +9,11 @@ document.getElementById("closeBtn").onclick = function () {
 };
 
 document.getElementById("themeBtn").onclick = function () {
-    alert("Dark Mode will be added soon.");
+    document.body.classList.toggle("dark");
+
+    if(document.body.classList.contains("dark")){
+        this.innerHTML = "☀️";
+    }else{
+        this.innerHTML = "🌙";
+    }
 };
