@@ -1,5 +1,3 @@
-const EDIT_MODE = true;
-
 const sidebar = document.getElementById("sidebar");
 const menuBtn = document.getElementById("menuBtn");
 const closeBtn = document.getElementById("closeBtn");
@@ -55,16 +53,3 @@ themeBtn.onclick = function () {
     }
 };
 
-const editBtn = document.getElementById("editPhotoBtn");
-
-if (EDIT_MODE) {
-
-    const password = prompt("Enter Admin Password");
-
-    if (password === "BijoyP888") {
-        editBtn.style.display = "inline-block";
-    } else {
-        alert("Wrong Password!");
-    }
-
-}
