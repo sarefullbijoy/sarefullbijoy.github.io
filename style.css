@@ -238,3 +238,32 @@ a:hover{
 .gallery img:hover{
     transform:scale(1.05);
 }
+/* ---------- Lightbox ---------- */
+
+.lightbox{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.9);
+    justify-content:center;
+    align-items:center;
+    z-index:2000;
+}
+
+.lightbox img{
+    max-width:90%;
+    max-height:90%;
+    border-radius:10px;
+}
+
+#closeLightbox{
+    position:absolute;
+    top:20px;
+    right:30px;
+    color:white;
+    font-size:40px;
+    cursor:pointer;
+}
