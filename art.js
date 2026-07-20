@@ -30,3 +30,9 @@ lightbox.onclick=function(e){
     }
 
 };
+// Load saved theme
+const savedTheme = localStorage.getItem("theme");
+
+if(savedTheme === "dark"){
+    document.body.classList.add("dark");
+}
