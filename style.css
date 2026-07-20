@@ -1,6 +1,6 @@
-/* ==========================
-   Global
-========================== */
+/*==========================
+        GLOBAL
+==========================*/
 
 html{
     scroll-behavior:smooth;
@@ -10,64 +10,99 @@ html{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial,sans-serif;
 }
 
 body{
-    background:#f4f4f4;
+
+    font-family:Arial,sans-serif;
+    background:#f5f7fb;
     color:#222;
+
     transition:.3s;
+
 }
 
-/* ==========================
-   Header
-========================== */
+a{
+
+    text-decoration:none;
+
+}
+
+main{
+
+    width:100%;
+
+}
+
+/*==========================
+        HEADER
+==========================*/
 
 header{
+
     position:sticky;
+
     top:0;
+
     z-index:1000;
 
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
 
-    padding:15px 20px;
+    padding:18px 30px;
 
-    background:#222;
-    color:#fff;
+    background:#1f2937;
+
+    color:white;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+
 }
 
 header h2{
-    font-size:20px;
+
+    font-size:22px;
+
 }
 
 header button{
+
     background:none;
+
     border:none;
+
     color:white;
+
     font-size:24px;
+
     cursor:pointer;
+
 }
 
-/* ==========================
-   Sidebar
-========================== */
+/*==========================
+        SIDEBAR
+==========================*/
 
 .sidebar{
 
     position:fixed;
-    top:0;
-    left:-260px;
 
-    width:250px;
+    top:0;
+
+    left:-270px;
+
+    width:260px;
+
     height:100vh;
 
-    background:#333;
+    background:#1f2937;
 
-    padding:20px;
+    padding:25px;
 
-    transition:.3s;
+    transition:.35s;
 
     z-index:999;
 
@@ -84,6 +119,7 @@ header button{
     float:right;
 
     background:none;
+
     border:none;
 
     color:white;
@@ -92,7 +128,7 @@ header button{
 
     cursor:pointer;
 
-    margin-bottom:20px;
+    margin-bottom:25px;
 
 }
 
@@ -102,13 +138,11 @@ header button{
 
     color:white;
 
-    text-decoration:none;
-
-    padding:12px;
+    padding:14px;
 
     margin:10px 0;
 
-    border-radius:10px;
+    border-radius:12px;
 
     transition:.3s;
 
@@ -116,239 +150,340 @@ header button{
 
 .sidebar a:hover{
 
-    background:#444;
+    background:#2563eb;
 
 }
 
-/* ==========================
-   Main
-========================== */
-
-main{
-
-    padding:25px;
-
-}
-
-/* ==========================
-   Home
-========================== */
-
-.home{
-
-    text-align:center;
-
-    padding:40px 20px;
-
-}
-
-.profile-frame{
-
-    width:190px;
-    height:190px;
-
-    margin:auto;
-
-    border:6px solid royalblue;
-
-    border-radius:50%;
-
-    padding:6px;
-
-    background:white;
-
-    box-shadow:0 5px 15px rgba(0,0,0,.25);
-
-}
-
-.home-profile{
-
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-
-    border-radius:50%;
-
-}
-
-.home h1{
-
-    margin-top:20px;
-
-    font-size:36px;
-
-}
-
-.tagline{
-
-    margin-top:10px;
-
-    color:#666;
-
-}
-
-/* ==========================
-   Section
-========================== */
+/*==========================
+        SECTION
+==========================*/
 
 section{
 
-    background:white;
-
-    margin-top:30px;
-
-    padding:20px;
-
-    border-radius:15px;
-
-    box-shadow:0 2px 10px rgba(0,0,0,.12);
-
-    transition:.3s;
+    padding:80px 8%;
 
 }
 
-section:hover{
+/*==========================
+        HERO
+==========================*/
 
-    transform:translateY(-5px);
+.hero{
 
-    box-shadow:0 10px 20px rgba(0,0,0,.18);
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:60px;
+
+    min-height:80vh;
 
 }
 
-section h2{
+.hero-text{
 
-    color:royalblue;
+    flex:1;
+
+}
+
+.greeting{
+
+    font-size:18px;
+
+    color:#666;
+
+    margin-bottom:12px;
+
+}
+
+.hero h1{
+
+    font-size:58px;
 
     margin-bottom:15px;
 
 }
 
-blockquote{
+.hero h2{
 
-    border-left:5px solid royalblue;
+    font-size:26px;
 
-    padding-left:15px;
+    color:#2563eb;
 
-    margin:15px 0;
-
-    font-style:italic;
+    margin-bottom:20px;
 
 }
 
-ul{
+.hero-description{
 
-    margin-left:20px;
+    max-width:500px;
 
-}
+    line-height:1.8;
 
-li{
+    font-size:18px;
 
-    margin:8px 0;
-
-}
-
-a{
-
-    color:royalblue;
-
-    text-decoration:none;
+    color:#555;
 
 }
 
-a:hover{
+/*==========================
+        PROFILE
+==========================*/
 
-    text-decoration:underline;
+.hero-image{
 
-}
+    flex:1;
 
-/* ==========================
-   Gallery
-========================== */
-
-.gallery{
-
-    display:grid;
-
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-
-    gap:20px;
-
-}
-
-.gallery img{
-
-    width:100%;
-
-    display:block;
-
-    border-radius:15px;
-
-    cursor:pointer;
-
-    transition:.3s;
-
-    box-shadow:0 4px 10px rgba(0,0,0,.25);
-
-}
-
-.gallery img:hover{
-
-    transform:scale(1.04);
-
-}
-
-/* ==========================
-   Lightbox
-========================== */
-
-.lightbox{
-
-    display:none;
-
-    position:fixed;
-
-    inset:0;
-
-    background:rgba(0,0,0,.9);
+    display:flex;
 
     justify-content:center;
 
-    align-items:center;
+}
 
-    z-index:2000;
+.profile-frame{
+
+    width:300px;
+
+    height:360px;
+
+    padding:10px;
+
+    border-radius:160px 160px 70px 70px;
+
+    background:linear-gradient(135deg,#2563eb,#4f46e5);
+
+    box-shadow:0 20px 35px rgba(0,0,0,.18);
 
 }
 
-.lightbox img{
+.profile-frame img{
 
-    max-width:90%;
+    width:100%;
 
-    max-height:90%;
+    height:100%;
+
+    object-fit:cover;
+
+    border-radius:150px 150px 60px 60px;
+
+}
+
+/*==========================
+        ABOUT
+==========================*/
+
+#about{
+
+    background:#ffffff;
+
+    border-radius:20px;
+
+    margin:0 8% 40px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+}
+
+#about h2{
+
+    color:#2563eb;
+
+    margin-bottom:20px;
+
+    font-size:34px;
+
+}
+
+#about p{
+
+    font-size:18px;
+
+    line-height:1.9;
+
+    color:#555;
+
+}
+
+
+/*==========================
+        PHILOSOPHY
+==========================*/
+
+#philosophy{
+
+    background:#ffffff;
+
+    border-radius:20px;
+
+    margin:0 8% 40px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+}
+
+#philosophy h2{
+
+    color:#2563eb;
+
+    margin-bottom:25px;
+
+    font-size:34px;
+
+}
+
+blockquote{
+
+    border-left:5px solid #2563eb;
+
+    padding:18px 25px;
+
+    margin:20px 0;
+
+    font-style:italic;
+
+    background:#f8fbff;
 
     border-radius:12px;
 
 }
 
-#closeLightbox{
 
-    position:absolute;
+/*==========================
+        SKILLS
+==========================*/
 
-    top:20px;
+#skills{
 
-    right:30px;
+    background:#ffffff;
 
-    color:white;
+    border-radius:20px;
 
-    font-size:40px;
+    margin:0 8% 40px;
 
-    cursor:pointer;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
 
 }
 
-/* ==========================
-   Dark Mode
-========================== */
+#skills h2{
+
+    color:#2563eb;
+
+    margin-bottom:25px;
+
+    font-size:34px;
+
+}
+
+#skills ul{
+
+    margin-left:22px;
+
+}
+
+#skills li{
+
+    margin:14px 0;
+
+    font-size:18px;
+
+}
+
+
+/*==========================
+        PROJECTS
+==========================*/
+
+#projects{
+
+    background:#ffffff;
+
+    border-radius:20px;
+
+    margin:0 8% 40px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+}
+
+#projects h2{
+
+    color:#2563eb;
+
+    margin-bottom:25px;
+
+    font-size:34px;
+
+}
+
+#projects ul{
+
+    margin-left:22px;
+
+}
+
+#projects li{
+
+    margin:14px 0;
+
+    font-size:18px;
+
+}
+
+
+/*==========================
+        CONTACT
+==========================*/
+
+#contact{
+
+    background:#ffffff;
+
+    border-radius:20px;
+
+    margin:0 8% 60px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+}
+
+#contact h2{
+
+    color:#2563eb;
+
+    margin-bottom:25px;
+
+    font-size:34px;
+
+}
+
+#contact p{
+
+    margin:16px 0;
+
+    font-size:18px;
+
+}
+
+#contact a{
+
+    color:#2563eb;
+
+    font-weight:600;
+
+}
+
+#contact a:hover{
+
+    text-decoration:underline;
+
+}
+
+
+/*==========================
+        DARK MODE
+==========================*/
 
 body.dark{
 
@@ -360,236 +495,137 @@ body.dark{
 
 body.dark header{
 
-    background:#111;
+    background:#0f172a;
 
 }
 
 body.dark .sidebar{
 
-    background:#1a1a1a;
+    background:#111827;
 
 }
 
 body.dark .sidebar a:hover{
 
-    background:#333;
+    background:#2563eb;
 
 }
 
-body.dark main{
+body.dark #about,
+body.dark #philosophy,
+body.dark #skills,
+body.dark #projects,
+body.dark #contact{
 
-    background:#121212;
-
-}
-
-body.dark section{
-
-    background:#1e1e1e;
+    background:#1f1f1f;
 
     color:#f1f1f1;
 
 }
 
-body.dark h1,
-body.dark h2{
-
-    color:#4da3ff;
-
-}
-
-body.dark .tagline{
-
-    color:#bbb;
-
-}
-
 body.dark blockquote{
+
+    background:#2b2b2b;
 
     border-left-color:#4da3ff;
 
 }
 
-body.dark .profile-frame{
+body.dark .greeting{
 
-    background:#222;
+    color:#cfcfcf;
+
+}
+
+body.dark .hero-description{
+
+    color:#d6d6d6;
 
 }
 
-body.dark .gallery img{
 
-    box-shadow:0 5px 15px rgba(255,255,255,.08);
-
-}
+/*==========================
+        RESPONSIVE
+==========================*/
 
 @media(max-width:900px){
+
+header{
+
+    padding:15px 20px;
+
+}
+
+header h2{
+
+    font-size:18px;
+
+}
 
 .hero{
 
     flex-direction:column-reverse;
+
     text-align:center;
+
+    gap:35px;
+
+    min-height:auto;
+
+    padding-top:60px;
 
 }
 
 .hero-description{
 
     margin:auto;
-    margin-bottom:35px;
-
-}
-
-.hero-buttons{
-
-    justify-content:center;
 
 }
 
 .hero h1{
 
-    font-size:42px;
+    font-size:40px;
 
-}
-
-.profile-frame{
-
-    width:280px;
-    height:340px;
-
-}
-
-}
-/* ================= HERO ================= */
-
-.hero{
-    min-height:100vh;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:60px;
-
-    padding:80px 8%;
-}
-
-.hero-text{
-    flex:1;
-}
-
-.greeting{
-    color:#777;
-    font-size:18px;
-    margin-bottom:10px;
-}
-
-.hero h1{
-    font-size:58px;
-    margin-bottom:15px;
 }
 
 .hero h2{
-    font-size:26px;
-    color:#3b82f6;
-    margin-bottom:25px;
-}
 
-.hero-description{
-
-    max-width:600px;
-    line-height:1.8;
-    color:#666;
-    font-size:18px;
-    margin-bottom:35px;
-
-}
-
-/* Buttons */
-
-.hero-buttons{
-
-    display:flex;
-    gap:18px;
-    flex-wrap:wrap;
-
-}
-
-.btn{
-
-    text-decoration:none;
-    padding:14px 28px;
-    border-radius:30px;
-    transition:.3s;
-
-}
-
-.primary{
-
-    background:#3b82f6;
-    color:white;
-
-}
-
-.primary:hover{
-
-    transform:translateY(-4px);
-
-}
-
-.secondary{
-
-    border:2px solid #3b82f6;
-    color:#3b82f6;
-
-}
-
-.secondary:hover{
-
-    background:#3b82f6;
-    color:white;
-
-}
-
-/* ================= PROFILE ================= */
-
-.hero-image{
-
-    flex:1;
-    display:flex;
-    justify-content:center;
+    font-size:22px;
 
 }
 
 .profile-frame{
 
-    width:360px;
-    height:430px;
+    width:250px;
 
-    background:linear-gradient(145deg,#3b82f6,#6d28d9);
-
-    border-radius:180px 180px 70px 70px;
-
-    padding:10px;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    box-shadow:0 20px 40px rgba(0,0,0,.25);
-
-    transition:.4s;
+    height:300px;
 
 }
 
-.profile-frame:hover{
+section{
 
-    transform:translateY(-10px);
+    padding:60px 6%;
 
 }
 
-.profile-frame img{
+#about,
+#philosophy,
+#skills,
+#projects,
+#contact{
 
-    width:100%;
-    height:100%;
+    margin:0 5% 30px;
 
-    object-fit:cover;
+}
 
-    border-radius:170px 170px 60px 60px;
+#about h2,
+#philosophy h2,
+#skills h2,
+#projects h2,
+#contact h2{
+
+    font-size:28px;
+
+}
 
 }
