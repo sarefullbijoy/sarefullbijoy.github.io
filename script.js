@@ -1,119 +1,155 @@
-// ===============================
-// Portfolio Script
-// ===============================
+//==================================================
+//              BIJOY PORTFOLIO
+//                 script.js
+//==================================================
 
-// ---------- Gallery Lightbox ----------
-
-const galleryImages = document.querySelectorAll(".gallery img");
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightboxImg");
-const closeLightbox = document.getElementById("closeLightbox");
-
-if (galleryImages.length > 0) {
-
-    galleryImages.forEach(img => {
-
-        img.addEventListener("click", () => {
-
-            lightbox.style.display = "flex";
-            lightboxImg.src = img.src;
-
-        });
-
-    });
-
-}
-
-if (closeLightbox) {
-
-    closeLightbox.addEventListener("click", () => {
-
-        lightbox.style.display = "none";
-
-    });
-
-}
-
-if (lightbox) {
-
-    lightbox.addEventListener("click", (e) => {
-
-        if (e.target === lightbox) {
-
-            lightbox.style.display = "none";
-
-        }
-
-    });
-
-}
+"use strict";
 
 
-// ---------- Sidebar ----------
 
-const sidebar = document.getElementById("sidebar");
+//==================================================
+//              SELECT ELEMENTS
+//==================================================
+
+const body = document.body;
+
 const menuBtn = document.getElementById("menuBtn");
 const closeBtn = document.getElementById("closeBtn");
+const sidebar = document.getElementById("sidebar");
 
-if (menuBtn && sidebar) {
+const themeBtn = document.getElementById("themeBtn");
 
-    menuBtn.addEventListener("click", () => {
 
-        sidebar.classList.toggle("active");
 
-    });
 
-}
+//==================================================
+//              SIDEBAR
+//==================================================
 
-if (closeBtn && sidebar) {
+function openSidebar(){
 
-    closeBtn.addEventListener("click", () => {
+    if(!sidebar) return;
 
-        sidebar.classList.remove("active");
-
-    });
+    sidebar.classList.add("active");
 
 }
 
-document.addEventListener("click", (e) => {
 
-    if (
+function closeSidebar(){
+
+    if(!sidebar) return;
+
+    sidebar.classList.remove("active");
+
+}
+
+
+if(menuBtn){
+
+    menuBtn.addEventListener("click",openSidebar);
+
+}
+
+
+if(closeBtn){
+
+    closeBtn.addEventListener("click",closeSidebar);
+
+}
+
+
+
+// Close when clicking outside
+
+document.addEventListener("click",(event)=>{
+
+    if(
         sidebar &&
         sidebar.classList.contains("active") &&
-        !sidebar.contains(e.target) &&
-        !menuBtn.contains(e.target)
-    ) {
+        !sidebar.contains(event.target) &&
+        menuBtn &&
+        !menuBtn.contains(event.target)
+    ){
 
-        sidebar.classList.remove("active");
+        closeSidebar();
 
     }
 
 });
 
 
-// ---------- Theme ----------
 
-const themeBtn = document.getElementById("themeBtn");
+
+//==================================================
+//              ESC KEY
+//==================================================
+
+document.addEventListener("keydown",(event)=>{
+
+    if(event.key==="Escape"){
+
+        closeSidebar();
+
+    }
+
+});
+
+
+
+
+//==================================================
+//          CLOSE AFTER CLICK
+//==================================================
+
+const navLinks=document.querySelectorAll(".sidebar a");
+
+navLinks.forEach(link=>{
+
+    link.addEventListener("click",()=>{
+
+        closeSidebar();
+
+    });
+
+});
+
+//==================================================
+//                  DARK MODE
+//==================================================
+
+const savedTheme = localStorage.getItem("theme");
+
+const systemTheme = window.matchMedia(
+    "(prefers-color-scheme: dark)"
+);
+
+
+
+//==================================================
+//              APPLY THEME
+//==================================================
 
 function applyTheme(theme){
 
     if(theme === "dark"){
 
-        document.body.classList.add("dark");
+        body.classList.add("dark");
 
         if(themeBtn){
 
-            themeBtn.innerHTML = "☀️";
+            themeBtn.textContent = "☀️";
 
         }
 
-    }else{
+    }
 
-        document.body.classList.remove("dark");
+    else{
+
+        body.classList.remove("dark");
 
         if(themeBtn){
 
-            themeBtn.innerHTML = "🌙";
+            themeBtn.textContent = "🌙";
 
         }
 
@@ -121,43 +157,284 @@ function applyTheme(theme){
 
 }
 
-const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
-const savedTheme = localStorage.getItem("theme");
+
+//==================================================
+//          INITIAL THEME
+//==================================================
 
 if(savedTheme){
 
     applyTheme(savedTheme);
 
-}else{
+}
 
-    applyTheme(mediaQuery.matches ? "dark" : "light");
+else{
+
+    applyTheme(
+
+        systemTheme.matches
+        ? "dark"
+        : "light"
+
+    );
 
 }
 
+
+
+//==================================================
+//          TOGGLE BUTTON
+//==================================================
+
 if(themeBtn){
 
-    themeBtn.addEventListener("click", ()=>{
+    themeBtn.addEventListener("click",()=>{
 
-        const newTheme =
-        document.body.classList.contains("dark")
-        ? "light"
-        : "dark";
+        const nextTheme =
 
-        applyTheme(newTheme);
+            body.classList.contains("dark")
+            ? "light"
+            : "dark";
 
-        localStorage.setItem("theme", newTheme);
+        applyTheme(nextTheme);
+
+        localStorage.setItem(
+
+            "theme",
+
+            nextTheme
+
+        );
 
     });
 
 }
 
-mediaQuery.addEventListener("change",(e)=>{
 
-    if(!localStorage.getItem("theme")){
 
-        applyTheme(e.matches ? "dark" : "light");
+//==================================================
+//      FOLLOW SYSTEM THEME
+//==================================================
+
+systemTheme.addEventListener("change",(event)=>{
+
+    if(localStorage.getItem("theme")) return;
+
+    applyTheme(
+
+        event.matches
+        ? "dark"
+        : "light"
+
+    );
+
+});
+
+//==================================================
+//          SCROLL ANIMATION
+//==================================================
+
+
+const animatedElements = document.querySelectorAll(
+    ".fade-up, .fade-left, .fade-right, .scale-in"
+);
+
+
+
+const observer = new IntersectionObserver(
+
+    (entries)=>{
+
+        entries.forEach(entry=>{
+
+
+            if(entry.isIntersecting){
+
+                entry.target.style.opacity = "1";
+
+                entry.target.style.transform = "translate(0,0)";
+
+                observer.unobserve(entry.target);
+
+            }
+
+
+        });
+
+
+    },
+
+    {
+
+        threshold:0.15
 
     }
 
+);
+
+
+
+animatedElements.forEach(element=>{
+
+    element.style.opacity="0";
+
+    observer.observe(element);
+
 });
+
+
+
+
+
+//==================================================
+//          SMOOTH SCROLL
+//==================================================
+
+
+const anchors = document.querySelectorAll(
+    'a[href^="#"]'
+);
+
+
+
+anchors.forEach(anchor=>{
+
+
+    anchor.addEventListener(
+        "click",
+        function(event){
+
+
+            const target =
+            document.querySelector(
+                this.getAttribute("href")
+            );
+
+
+            if(target){
+
+
+                event.preventDefault();
+
+
+                target.scrollIntoView({
+
+                    behavior:"smooth",
+
+                    block:"start"
+
+                });
+
+
+            }
+
+
+        }
+
+    );
+
+
+});
+
+
+
+
+
+//==================================================
+//          ACTIVE NAVIGATION
+//==================================================
+
+
+const sections =
+document.querySelectorAll(
+    "section[id]"
+);
+
+
+
+const navItems =
+document.querySelectorAll(
+    ".sidebar a"
+);
+
+
+
+window.addEventListener(
+    "scroll",
+    ()=>{
+
+
+        let current="";
+
+
+        sections.forEach(section=>{
+
+
+            const sectionTop =
+            section.offsetTop - 150;
+
+
+            if(
+                window.scrollY >= sectionTop
+            ){
+
+                current =
+                section.getAttribute("id");
+
+            }
+
+
+        });
+
+
+
+        navItems.forEach(link=>{
+
+
+            link.classList.remove(
+                "active"
+            );
+
+
+            if(
+                link.getAttribute("href")
+                === "#" + current
+            ){
+
+                link.classList.add(
+                    "active"
+                );
+
+            }
+
+
+        });
+
+
+    }
+
+);
+
+
+
+
+
+//==================================================
+//          CURRENT YEAR FOOTER
+//==================================================
+
+
+const year =
+document.querySelector(
+    ".current-year"
+);
+
+
+
+if(year){
+
+    year.textContent =
+    new Date().getFullYear();
+
+}
