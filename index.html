@@ -5,82 +5,125 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Official Portfolio of Sarefull Islam Bijoy">
+
+    <meta name="keywords"
+          content="Bijoy, Portfolio, Student, Artist, Programmer">
+
+    <meta name="author"
+          content="Sarefull Islam Bijoy">
 
     <title>Bijoy Portfolio</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="icon"
+          type="image/png"
+          href="logo.png">
 
-    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet"
+          href="style.css">
 
 </head>
 
 <body>
 
-<!-- ==========================
-        HEADER
-========================== -->
+
+<!--==================================
+            HEADER
+===================================-->
 
 <header>
 
-    <button id="menuBtn">☰</button>
+    <button id="menuBtn"
+            aria-label="Open Menu">
 
-    <h2>Bijoy Portfolio</h2>
+        ☰
 
-    <button id="themeBtn">🌙</button>
+    </button>
+
+    <h2 class="logo">
+
+        Bijoy Portfolio
+
+    </h2>
+
+    <button id="themeBtn"
+            aria-label="Dark Mode">
+
+        🌙
+
+    </button>
 
 </header>
 
 
-<!-- ==========================
-        SIDEBAR
-========================== -->
+<!--==================================
+            SIDEBAR
+===================================-->
 
-<div id="sidebar" class="sidebar">
+<nav id="sidebar"
+     class="sidebar">
 
-    <button id="closeBtn">✖</button>
+    <button id="closeBtn">
+
+        ✕
+
+    </button>
 
     <a href="#home">🏠 Home</a>
 
     <a href="#about">👤 About</a>
 
-    <a href="education.html">🎓 Education</a>
+    <a href="education.html">
+        🎓 Education
+    </a>
 
-    <a href="#philosophy">💡 Philosophy</a>
+    <a href="#philosophy">
+        💡 Philosophy
+    </a>
 
-    <a href="#skills">🛠 Skills</a>
+    <a href="#skills">
+        🛠 Skills
+    </a>
 
-    <a href="#projects">📂 Projects</a>
+    <a href="#projects">
+        📂 Projects
+    </a>
 
-    <a href="art.html">🎨 Art Gallery</a>
+    <a href="art.html">
+        🎨 Art Gallery
+    </a>
 
-    <a href="#contact">📞 Contact</a>
+    <a href="#contact">
+        📞 Contact
+    </a>
 
-</div>
+</nav>
 
 
-<!-- ==========================
-        MAIN
-========================== -->
 
 <main>
 
 
-<!-- ==========================
-        HOME
-========================== -->
+<!--==================================
+            HERO
+===================================-->
 
-<section id="home" class="hero">
+<section id="home"
+         class="hero">
 
-    <div class="hero-text">
+    <div class="hero-text fade-left">
 
-        <p class="greeting">
+        <span class="greeting">
 
-            Assalamu Alaikum, I'm
+            Assalamu Alaikum 👋
 
-        </p>
+        </span>
 
-        <h1>
+        <h1 class="gradient-text">
 
             Sarefull Islam Bijoy
 
@@ -88,17 +131,56 @@
 
         <h2>
 
-            Student | Artist | Lifelong Learner
+            Student • Artist • Lifelong Learner
 
         </h2>
 
         <p class="hero-description">
 
-            I'm a student with a passion for art, technology, and languages.
-            I enjoy exploring new ideas, building creative projects,
-            and learning something new every day.
+            Welcome to my personal portfolio.
+
+            I love learning new things,
+            creating meaningful projects,
+            exploring technology,
+            improving my artistic skills,
+            and growing every day as a learner.
 
         </p>
+
+        <div class="hero-buttons">
+
+            <a href="#projects"
+               class="project-btn">
+
+                View Projects
+
+            </a>
+
+            <a href="#contact"
+               class="project-btn">
+
+                Contact Me
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="hero-image fade-right">
+
+        <div class="profile-frame">
+
+            <img src="profile.jpg"
+                 alt="Sarefull Islam Bijoy">
+
+        </div>
+
+    </div>
+
+</section>        </p>
 
     </div>
 
@@ -241,6 +323,374 @@
 </section>
 
 </main>
+
+<script src="script.js"></script>
+
+<!--==================================
+            ABOUT
+===================================-->
+
+<section id="about"
+         class="fade-up">
+
+    <h2>
+
+        👤 About Me
+
+    </h2>
+
+    <div class="divider"></div>
+
+    <p>
+
+        Assalamu Alaikum.
+
+        I'm <strong>Sarefull Islam Bijoy</strong>,
+        a student who enjoys learning,
+        creating and improving every day.
+
+    </p>
+
+    <p>
+
+        My interests include
+        <strong>Technology</strong>,
+        <strong>Art</strong>,
+        <strong>Languages</strong>
+        and
+        <strong>Islamic Studies</strong>.
+
+    </p>
+
+    <p>
+
+        I believe that continuous learning,
+        discipline and consistency
+        are the keys to long-term success.
+
+    </p>
+
+</section>
+
+
+
+<!--==================================
+        PHILOSOPHY
+===================================-->
+
+<section id="philosophy"
+         class="fade-up">
+
+    <h2>
+
+        💡 Philosophy
+
+    </h2>
+
+    <div class="divider"></div>
+
+    <blockquote>
+
+        "Be the change you wish to see in the world."
+
+    </blockquote>
+
+    <blockquote>
+
+        "The best among you are those who benefit others."
+
+    </blockquote>
+
+</section>
+
+
+
+<!--==================================
+            SKILLS
+===================================-->
+
+<section id="skills"
+         class="fade-up">
+
+    <h2>
+
+        🛠 Skills
+
+    </h2>
+
+    <div class="divider"></div>
+
+    <div class="skills-grid">
+
+        <div class="skill-card">
+
+            <h3>HTML</h3>
+
+            <p>
+
+                Building clean and semantic
+                web pages.
+
+            </p>
+
+        </div>
+
+        <div class="skill-card">
+
+            <h3>CSS</h3>
+
+            <p>
+
+                Responsive layouts,
+                animations and modern UI.
+
+            </p>
+
+        </div>
+
+        <div class="skill-card">
+
+            <h3>JavaScript</h3>
+
+            <p>
+
+                Interactive websites
+                and dynamic features.
+
+            </p>
+
+        </div>
+
+        <div class="skill-card">
+
+            <h3>Python</h3>
+
+            <p>
+
+                Beginner level programming
+                and problem solving.
+
+            </p>
+
+        </div>
+
+        <div class="skill-card">
+
+            <h3>Git & GitHub</h3>
+
+            <p>
+
+                Version control and
+                project hosting.
+
+            </p>
+
+        </div>
+
+        <div class="skill-card">
+
+            <h3>Digital Art</h3>
+
+            <p>
+
+                Traditional sketching,
+                digital creativity
+                and visual design.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!--==================================
+            PROJECTS
+===================================-->
+
+<section id="projects"
+         class="fade-up">
+
+    <h2>
+
+        📂 Projects
+
+    </h2>
+
+    <div class="divider"></div>
+
+    <div class="projects-grid">
+
+        <div class="project-card">
+
+            <h3>
+
+                🌐 Portfolio Website
+
+            </h3>
+
+            <p>
+
+                My personal portfolio website
+                created using HTML, CSS
+                and JavaScript.
+
+            </p>
+
+            <span class="project-status">
+
+                Completed
+
+            </span>
+
+        </div>
+
+
+        <div class="project-card">
+
+            <h3>
+
+                📜 History Timeline
+
+            </h3>
+
+            <p>
+
+                A timeline website where
+                historical events can be
+                explored in chronological order.
+
+            </p>
+
+            <span class="project-status">
+
+                In Progress
+
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!--==================================
+            CONTACT
+===================================-->
+
+<section id="contact"
+         class="fade-up">
+
+    <h2>
+
+        📞 Contact
+
+    </h2>
+
+    <div class="divider"></div>
+
+    <p class="contact-subtitle">
+
+        Feel free to connect with me through
+        the following platforms.
+
+    </p>
+
+    <div class="contact-grid">
+
+        <div class="contact-card">
+
+            <div class="contact-icon">
+
+                📘
+
+            </div>
+
+            <h3>
+
+                Facebook
+
+            </h3>
+
+            <p>
+
+                Sarefull Islam Bijoy
+
+            </p>
+
+            <a class="contact-link"
+               href="https://www.facebook.com/share/18pt2AtYHX/"
+               target="_blank">
+
+                Visit Profile
+
+            </a>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <div class="contact-icon">
+
+                💻
+
+            </div>
+
+            <h3>
+
+                GitHub
+
+            </h3>
+
+            <p>
+
+                github.com/bijoyb19818686-islam
+
+            </p>
+
+            <a class="contact-link"
+               href="https://github.com/bijoyb19818686-islam"
+               target="_blank">
+
+                View GitHub
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+
+<!--==================================
+            FOOTER
+===================================-->
+
+<footer>
+
+    <p>
+
+        © 2026 Sarefull Islam Bijoy
+
+    </p>
+
+    <p>
+
+        Built with HTML, CSS & JavaScript
+
+    </p>
+
+</footer>
+
+
 
 <script src="script.js"></script>
 
