@@ -2181,70 +2181,10 @@ body.dark .education-year{
         OVERLAY
 ==============================*/
 
-.gallery-overlay{
-
-    position:absolute;
-
-    inset:0;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    background:rgba(0,0,0,.55);
-
-    opacity:0;
-
-    transition:.35s;
-
-}
-
-
-.gallery-item:hover .gallery-overlay{
-
-    opacity:1;
-
-}
-
 
 /*==============================
         ICON
 ==============================*/
-
-.gallery-overlay span{
-
-    width:70px;
-
-    height:70px;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    border-radius:50%;
-
-    background:white;
-
-    color:var(--primary);
-
-    font-size:30px;
-
-    transform:scale(.7);
-
-    transition:.35s;
-
-}
-
-
-.gallery-item:hover .gallery-overlay span{
-
-    transform:scale(1);
-
-}
 
 
 /*==============================
