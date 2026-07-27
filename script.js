@@ -360,101 +360,61 @@ document.querySelectorAll(
 
 
 
-window.addEventListener(
-    "scroll",
-    ()=>{
-
-
-        let current="";
-
-
-        sections.forEach(section=>{
-
-
-            const sectionTop =
-            section.offsetTop - 150;
-
-
-            if(
-                window.scrollY >= sectionTop
-            ){
-
-                current =
-                section.getAttribute("id");
-
-            }
-
-
-        });
-
-
-
-        navItems.forEach(link=>{
-
-
-            link.classList.remove(
-                "active"
-            );
-
-
-            if(
-                link.getAttribute("href")
-                === "#" + current
-            ){
-
-                link.classList.add(
-                    "active"
-                );
-
-            }
-
-
-        });
-
-
-    }
-
-);
-
 
 
 //==================================================
 //          SCROLL TO TOP
 //==================================================
 
-const scrollTopBtn =
-document.getElementById("scrollTopBtn");
+#scrollTopBtn{
 
+    position:absolute;
 
-window.addEventListener("scroll",()=>{
+    left:50%;
 
-    if(window.scrollY > 300){
+    top:0;
 
-        scrollTopBtn.classList.add("show");
+    transform:translate(-50%,-50%);
 
-    }
+    width:70px;
 
-    else{
+    height:70px;
 
-        scrollTopBtn.classList.remove("show");
+    border:none;
 
-    }
+    border-radius:22px;
 
-});
+    background:var(--primary);
 
+    color:#fff;
 
-scrollTopBtn.addEventListener("click",()=>{
+    font-size:28px;
 
-    window.scrollTo({
+    cursor:pointer;
 
-        top:0,
+    display:flex;
 
-        behavior:"smooth"
+    align-items:center;
 
-    });
+    justify-content:center;
 
-});
+    box-shadow:0 12px 30px rgba(0,0,0,.25);
 
+    transition:.3s;
+
+}
+
+#scrollTopBtn:hover{
+
+    transform:translate(-50%,-58%);
+
+}
+
+body.dark #scrollTopBtn{
+
+    background:#2563eb;
+
+}
 //==================================================
 //          CURRENT YEAR FOOTER
 //==================================================
