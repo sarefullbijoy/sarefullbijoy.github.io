@@ -362,59 +362,7 @@ document.querySelectorAll(
 
 
 
-//==================================================
-//          SCROLL TO TOP
-//==================================================
 
-#scrollTopBtn{
-
-    position:absolute;
-
-    left:50%;
-
-    top:0;
-
-    transform:translate(-50%,-50%);
-
-    width:70px;
-
-    height:70px;
-
-    border:none;
-
-    border-radius:22px;
-
-    background:var(--primary);
-
-    color:#fff;
-
-    font-size:28px;
-
-    cursor:pointer;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    box-shadow:0 12px 30px rgba(0,0,0,.25);
-
-    transition:.3s;
-
-}
-
-#scrollTopBtn:hover{
-
-    transform:translate(-50%,-58%);
-
-}
-
-body.dark #scrollTopBtn{
-
-    background:#2563eb;
-
-}
 //==================================================
 //          CURRENT YEAR FOOTER
 //==================================================
