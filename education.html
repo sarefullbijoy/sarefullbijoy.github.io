@@ -5,21 +5,22 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <meta name="description"
-          content="Education Journey of Sarefull Islam Bijoy">
+    <meta
+        name="description"
+        content="Bijoy's education journey from primary school to college."
+    >
 
-    <title>
-        Education | Bijoy Portfolio
-    </title>
+    <title>Education Journey — Bijoy</title>
 
-    <link rel="icon"
-          href="logo.png">
-
-    <link rel="stylesheet"
-          href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 
 </head>
 
@@ -27,281 +28,546 @@
 <body>
 
 
-<!--==================================
-            HEADER
-===================================-->
-
-<header>
-
-    <button id="menuBtn">
-
-        ☰
-
-    </button>
-
-
-    <h2 class="logo">
-
-        Education Journey
-
-    </h2>
-
-
-    <button id="themeBtn">
-
-        🌙
-
-    </button>
-
-</header>
-
-
-
-<!--==================================
-            SIDEBAR
-===================================-->
-
-<nav id="sidebar"
-     class="sidebar">
-
-    <button id="closeBtn">
-
-        ✕
-
-    </button>
-
-
-    <a href="index.html">
-
-        🏠 Home
-
-    </a>
-
-
-    <a href="education.html">
-
-        🎓 Education
-
-    </a>
-
-
-    <a href="art.html">
-
-        🎨 Art Gallery
-
-    </a>
-
-
-</nav>
-
-
-
-<main>
-
-
-<!--==================================
-            TITLE
-===================================-->
-
-<section class="education-section">
-
-
-<h1 class="page-title">
-
-    Education Journey
-
-</h1>
-
-
-<p class="education-subtitle">
-
-    The schools and college that shaped my learning journey.
-
-</p>
-
-
-
-<!--==================================
-        TIMELINE START
-===================================-->
-
-<div class="education-timeline">
-
-  <!--==================================
-            COLLEGE
-===================================-->
-
-<div class="education-card">
-
-
-    <img src="college-logo.jpg"
-         alt="College Logo"
-         class="education-logo">
-
-
-    <div class="education-content">
-
-
-       
-    <a href="https://www.facebook.com/share/1FDQD8K4d6/">
-
-        ভাষা সৈনিক অজিত গুহ মহাবিদ্যালয় 
-
-    </a>
-
-        </h3>
-
-
-        <p>
-
-            Higher Secondary Certificate (HSC)
-
-        </p>
-
-
-        <span class="education-year">
-
-            2025 - Present
-
-        </span>
-
-
-
-        <div class="education-image">
-
-            <img src="College.jpg"
-                 alt="College">
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="site-header">
+
+        <div class="container header-inner">
+
+
+            <a
+                href="index.html"
+                class="site-logo"
+                aria-label="Bijoy Home"
+            >
+                Bijoy<span class="logo-dot">.</span>
+            </a>
+
+
+            <button
+                class="menu-toggle"
+                data-menu-toggle
+                type="button"
+                aria-label="Open navigation"
+                aria-expanded="false"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+
+            <nav
+                class="site-nav"
+                aria-label="Main navigation"
+            >
+
+                <a
+                    href="index.html"
+                    class="nav-link"
+                    data-en="Home"
+                    data-bn="হোম"
+                >
+                    Home
+                </a>
+
+
+                <a
+                    href="education.html"
+                    class="nav-link page-link active"
+                    data-en="Education"
+                    data-bn="শিক্ষাযাত্রা"
+                >
+                    Education
+                </a>
+
+
+                <a
+                    href="art.html"
+                    class="nav-link page-link"
+                    data-en="Art Gallery"
+                    data-bn="শিল্পকর্ম"
+                >
+                    Art Gallery
+                </a>
+
+
+                <button
+                    class="language-toggle"
+                    data-language-toggle
+                    type="button"
+                    aria-label="Switch to Bangla"
+                >
+                    বাংলা
+                </button>
+
+
+                <button
+                    class="theme-toggle"
+                    data-theme-toggle
+                    type="button"
+                    aria-label="Switch theme"
+                >
+                    <span class="theme-icon">◐</span>
+                </button>
+
+            </nav>
 
         </div>
 
-
-    </div>
-
-
-</div>
+    </header>
 
 
 
-<!--==================================
-            HIGH SCHOOL
-===================================-->
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
 
-<div class="education-card">
-
-
-    <img src="highschool-logo.jpg"
-         alt="High School Logo"
-         class="education-logo">
+    <main>
 
 
-    <div class="education-content">
+        <!-- =================================================
+             PAGE HEADER
+        ================================================== -->
+
+        <section class="education-hero">
+
+            <div class="container">
 
 
-        <h3>
-
-    <a href="https://www.facebook.com/share/18tupGsBdp/">
-
-        কুমিল্লা হাই স্কুল, কুমিল্লা
-
-    </a>
-
-        </h3>
+                <span
+                    class="page-eyebrow"
+                    data-en="EDUCATION JOURNEY"
+                    data-bn="শিক্ষার পথচলা"
+                >
+                    EDUCATION JOURNEY
+                </span>
 
 
-        <p>
-
-            Secondary School Certificate (SSC)
-
-        </p>
-
-
-        <span class="education-year">
-
-            2020 - 2025
-
-        </span>
+                <h1
+                    data-en="From school to college."
+                    data-bn="বিদ্যালয় থেকে কলেজ পর্যন্ত।"
+                >
+                    From school to college.
+                </h1>
 
 
+                <p
+                    data-en="The places where my academic journey has taken shape."
+                    data-bn="যেসব প্রতিষ্ঠানের মধ্য দিয়ে আমার শিক্ষাজীবন ধীরে ধীরে গড়ে উঠেছে।"
+                >
+                    The places where my academic journey has taken shape.
+                </p>
 
-        <div class="education-image">
+            </div>
 
-            <img src="highschool.jpg"
-                 alt="High School">
+        </section>
+
+
+
+        <!-- =================================================
+             EDUCATION TIMELINE
+        ================================================== -->
+
+        <section
+            class="education-journey"
+            aria-labelledby="journey-title"
+        >
+
+            <div class="container">
+
+
+                <h2
+                    id="journey-title"
+                    class="visually-hidden"
+                    data-en="Education timeline"
+                    data-bn="শিক্ষার সময়রেখা"
+                >
+                    Education timeline
+                </h2>
+
+
+                <div class="education-list">
+
+
+                    <!-- =================================================
+                         PRIMARY SCHOOL
+                    ================================================== -->
+
+                    <article
+                        class="education-entry primary-entry"
+                        data-reveal
+                    >
+
+                        <div class="education-year">
+
+                            <span
+                                data-en="2019"
+                                data-bn="২০১৯"
+                            >
+                                2019
+                            </span>
+
+                        </div>
+
+
+                        <div class="education-card">
+
+
+                            <!-- Primary image -->
+                            <div class="education-image">
+
+                                <img
+                                    src="images/primary.jpg"
+                                    alt="Chakbazar Government Primary School"
+                                >
+
+                            </div>
+
+
+                            <div class="education-info">
+
+
+                                <span
+                                    class="education-level"
+                                    data-en="PRIMARY SCHOOL"
+                                    data-bn="প্রাথমিক বিদ্যালয়"
+                                >
+                                    PRIMARY SCHOOL
+                                </span>
+
+
+                                <h3
+                                    data-en="Chakbazar Government Primary School"
+                                    data-bn="চকবাজার সরকারি প্রাথমিক বিদ্যালয়"
+                                >
+                                    Chakbazar Government Primary School
+                                </h3>
+
+
+                                <div class="education-meta">
+
+                                    <span
+                                        data-en="PSC · 2019"
+                                        data-bn="পিএসসি · ২০১৯"
+                                    >
+                                        PSC · 2019
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- =================================================
+                         HIGH SCHOOL
+                    ================================================== -->
+
+                    <article
+                        class="education-entry highschool-entry"
+                        data-reveal
+                    >
+
+                        <div class="education-year">
+
+                            <span
+                                data-en="2020 — 2025"
+                                data-bn="২০২০ — ২০২৫"
+                            >
+                                2020 — 2025
+                            </span>
+
+                        </div>
+
+
+                        <div class="education-card">
+
+
+                            <!-- School image -->
+
+                            <div class="education-image">
+
+                                <img
+                                    src="images/highschool.jpg"
+                                    alt="Comilla High School"
+                                >
+
+                            </div>
+
+
+
+                            <div class="education-info">
+
+
+                                <!-- Logo -->
+
+                                <div class="institution-logo">
+
+                                    <img
+                                        src="images/highschool-logo.jpg"
+                                        alt="Comilla High School logo"
+                                    >
+
+                                </div>
+
+
+                                <span
+                                    class="education-level"
+                                    data-en="HIGH SCHOOL"
+                                    data-bn="মাধ্যমিক বিদ্যালয়"
+                                >
+                                    HIGH SCHOOL
+                                </span>
+                                <h3>
+
+                                    <a
+                                        href="https://www.facebook.com/share/1Brjf6T2qB/"
+                                        class="institution-link"
+                                        data-en="Comilla High School, Comilla"
+                                        data-bn="কুমিল্লা হাই স্কুল, কুমিল্লা"
+                                    >
+                                        Comilla High School, Comilla
+                                    </a>
+
+                                </h3>
+
+
+                                <div class="education-meta">
+
+                                    <span
+                                        data-en="SSC · 2025"
+                                        data-bn="এসএসসি · ২০২৫"
+                                    >
+                                        SSC · 2025
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- =================================================
+                         COLLEGE
+                    ================================================== -->
+
+                    <article
+                        class="education-entry college-entry current"
+                        data-reveal
+                    >
+
+                        <div class="education-year">
+
+                            <span
+                                data-en="2026 — Present"
+                                data-bn="২০২৬ — বর্তমান"
+                            >
+                                2026 — Present
+                            </span>
+
+                        </div>
+
+
+                        <div class="education-card">
+
+
+                            <!-- College image -->
+
+                            <div class="education-image">
+
+                                <img
+                                    src="images/College.jpg"
+                                    alt="Bhasha Sainik Ajit Guha Government College"
+                                >
+
+                            </div>
+
+
+
+                            <div class="education-info">
+
+
+                                <!-- College logo -->
+
+                                <div class="institution-logo">
+
+                                    <img
+                                        src="images/college-logo.jpg"
+                                        alt="Bhasha Sainik Ajit Guha Government College logo"
+                                    >
+
+                                </div>
+
+
+                                <span
+                                    class="education-level"
+                                    data-en="COLLEGE · CURRENT"
+                                    data-bn="কলেজ · বর্তমান"
+                                >
+                                    COLLEGE · CURRENT
+                                </span>
+
+
+                                <h3>
+
+                                    <a
+                                        href="www.cagc.edu.bd"
+                                        class="institution-link"
+                                        data-en="Bhasha Sainik Ajit Guha Government College"
+                                        data-bn="ভাষা সৈনিক অজিত গুহ সরকারি মহাবিদ্যালয়"
+                                    >
+                                        Bhasha Sainik Ajit Guha Government College
+                                    </a>
+
+                                </h3>
+
+
+                                <div class="education-meta">
+
+                                    <span
+                                        data-en="Started · 07/2026"
+                                        data-bn="শুরু · ০৭/২০২৬"
+                                    >
+                                        Started · 07/2026
+                                    </span>
+
+
+                                    <span
+                                        data-en="Higher Secondary"
+                                        data-bn="উচ্চমাধ্যমিক"
+                                    >
+                                        Higher Secondary
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             LEARNING BEYOND FORMAL EDUCATION
+        ================================================== -->
+
+        <section class="education-next">
+
+            <div class="container">
+
+                <div class="education-next-inner">
+
+
+                    <span
+                        class="page-eyebrow"
+                        data-en="BEYOND THE CLASSROOM"
+                        data-bn="শ্রেণিকক্ষের বাইরেও"
+                    >
+                        BEYOND THE CLASSROOM
+                    </span>
+
+
+                    <h2
+                        data-en="Learning continues."
+                        data-bn="শেখা চলতেই থাকে।"
+                    >
+                        Learning continues.
+                    </h2>
+
+
+                    <div class="learning-tags">
+
+                        <span
+                            data-en="Art"
+                            data-bn="শিল্প"
+                        >
+                            Art
+                        </span>
+
+                        <span
+                            data-en="Technology"
+                            data-bn="প্রযুক্তি"
+                        >
+                            Technology
+                        </span>
+
+                        <span
+                            data-en="Languages"
+                            data-bn="ভাষা"
+                        >
+                            Languages
+                        </span>
+
+                        <span
+                            data-en="Programming"
+                            data-bn="প্রোগ্রামিং"
+                        >
+                            Programming
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="site-footer">
+
+        <div class="container footer-inner">
+
+            <p
+                data-en="© 2026 Bijoy. Student · Artist · Lifelong Learner."
+                data-bn="© ২০২৬ বিজয়। শিক্ষার্থী · শিল্পী · আজীবন শিক্ষার্থী।"
+            >
+                © 2026 Bijoy. Student · Artist · Lifelong Learner.
+            </p>
+
+
+            <a
+                href="index.html"
+                class="text-link"
+                data-en="Back to home →"
+                data-bn="হোমে ফিরে যান →"
+            >
+                Back to home →
+            </a>
 
         </div>
 
-
-    </div>
-
-
-</div>
+    </footer>
 
 
 
-<!--==================================
-            PRIMARY SCHOOL
-===================================-->
-<div class="education-card">
-
-
-    <div class="education-content">
-
-        </h3>
-
-
-        <p>
-
-            Primary Education(PSC)
-
-        </p>
-
-
-        <span class="education-year">
-
-            2015 - 2019
-
-        </span>
-
-
-
-        <div class="education-image">
-
-            <img src="primary.jpg"
-                 alt="Primary School">
-        </div>
-
-
-    </div>
-
-
-</div>
-</section>
-
-  <!--==================================
-            FOOTER
-===================================-->
-
-<footer>
-
-    <p>
-
-        © 2026 Sarefull Islam Bijoy
-
-    </p>
-
-
-    <p>
-
-        Education & Learning Journey
-
-    </p>
-
-</footer>
-
-
-
-<script src="script.js"></script>
-
+    <script src="script.js"></script>
 
 </body>
 
