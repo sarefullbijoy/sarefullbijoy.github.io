@@ -5,25 +5,22 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <meta name="description"
-          content="Art Gallery of Sarefull Islam Bijoy">
+    <meta
+        name="description"
+        content="Bijoy's traditional artwork gallery."
+    >
 
-    <title>
+    <title>Art Gallery — Bijoy</title>
 
-        Art Gallery | Bijoy Portfolio
-
-    </title>
-
-
-    <link rel="icon"
-          href="logo.png">
-
-
-    <link rel="stylesheet"
-          href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 
 </head>
 
@@ -31,420 +28,588 @@
 <body>
 
 
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
 
-<!--==================================
-            HEADER
-===================================-->
+    <header class="site-header">
 
-<header>
+        <div class="container header-inner">
 
-    <button id="menuBtn">
+            <a
+                href="index.html"
+                class="site-logo"
+                aria-label="Bijoy Home"
+            >
+                Bijoy<span class="logo-dot">.</span>
+            </a>
 
-        ☰
 
-    </button>
+            <button
+                class="menu-toggle"
+                data-menu-toggle
+                type="button"
+                aria-label="Open navigation"
+                aria-expanded="false"
+            >
 
+                <span></span>
+                <span></span>
+                <span></span>
 
-    <h2 class="logo">
+            </button>
 
-        🎨 Art Gallery
 
-    </h2>
+            <nav
+                class="site-nav"
+                aria-label="Main navigation"
+            >
 
+                <a
+                    href="index.html"
+                    class="nav-link"
+                    data-en="Home"
+                    data-bn="হোম"
+                >
+                    Home
+                </a>
 
-    <button id="themeBtn">
 
-        🌙
+                <a
+                    href="education.html"
+                    class="nav-link page-link"
+                    data-en="Education"
+                    data-bn="শিক্ষাযাত্রা"
+                >
+                    Education
+                </a>
 
-    </button>
 
+                <a
+                    href="art.html"
+                    class="nav-link page-link active"
+                    data-en="Art Gallery"
+                    data-bn="শিল্পকর্ম"
+                >
+                    Art Gallery
+                </a>
 
-</header>
 
+                <button
+                    class="language-toggle"
+                    data-language-toggle
+                    type="button"
+                    aria-label="Switch to Bangla"
+                >
+                    বাংলা
+                </button>
 
 
+                <button
+                    class="theme-toggle"
+                    data-theme-toggle
+                    type="button"
+                    aria-label="Switch theme"
+                >
+                    <span class="theme-icon">◐</span>
+                </button>
 
-<!--==================================
-            SIDEBAR
-===================================-->
+            </nav>
 
-<nav id="sidebar"
-     class="sidebar">
+        </div>
 
+    </header>
 
-    <button id="closeBtn">
 
-        ✕
 
-    </button>
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
 
+    <main>
 
-    <a href="index.html">
 
-        🏠 Home
+        <!-- =================================================
+             ART HEADER
+        ================================================== -->
 
-    </a>
+        <section class="art-hero">
 
+            <div class="container">
 
-    <a href="education.html">
+                <span
+                    class="page-eyebrow"
+                    data-en="ART GALLERY"
+                    data-bn="শিল্পকর্ম"
+                >
+                    ART GALLERY
+                </span>
 
-        🎓 Education
 
-    </a>
+                <h1
+                    data-en="My works."
+                    data-bn="আমার শিল্পকর্ম।"
+                >
+                    My works.
+                </h1>
 
 
-    <a href="art.html">
+                <p
+                    data-en="Traditional artwork, studies and creative work."
+                    data-bn="ঐতিহ্যবাহী শিল্পকর্ম, অনুশীলন ও সৃজনশীল কাজ।"
+                >
+                    Traditional artwork, studies and creative work.
+                </p>
 
-        🎨 Art Gallery
+            </div>
 
-    </a>
+        </section>
 
 
-</nav>
 
+        <!-- =================================================
+             GALLERY
+        ================================================== -->
 
+        <section
+            class="art-gallery"
+            aria-labelledby="gallery-title"
+        >
 
+            <div class="container">
 
-<main>
 
+                <div class="gallery-header">
 
+                    <h2
+                        id="gallery-title"
+                        data-en="Selected works"
+                        data-bn="নির্বাচিত কাজ"
+                    >
+                        Selected works
+                    </h2>
 
-<!--==================================
-            GALLERY SECTION
-===================================-->
 
-<section class="gallery-section">
+                    <span
+                        class="gallery-count"
+                        data-en="TRADITIONAL ART"
+                        data-bn="ঐতিহ্যবাহী শিল্প"
+                    >
+                        TRADITIONAL ART
+                    </span>
 
+                </div>
 
-    <h1 class="page-title">
 
-        My Art Gallery
 
-    </h1>
+                <!-- =================================================
+                     ART GRID
+                ================================================== -->
 
+                <div class="art-grid">
 
-    <p class="gallery-subtitle">
 
-        A collection of my artworks and creative journey.
+                    <!-- ART 01 -->
 
-        Click any artwork to view it in full screen.
+                    <button
+                        class="art-item"
+                        type="button"
 
-    </p>
+                        data-lightbox
 
+                        data-image="images/art-01.jpg"
 
+                        data-title-en="Artwork 01"
+                        data-title-bn="শিল্পকর্ম ০১"
 
-    <div class="gallery">
-<!--==================================
-            ARTWORK 1
-===================================-->
+                        data-date-en="2026"
+                        data-date-bn="২০২৬"
+                    >
 
-<div class="gallery-item">
+                        <span class="art-image">
 
+                            <img
+                                src="images/art-01.jpg"
+                                alt="Artwork 01"
+                                loading="lazy"
+                            >
 
-    <img src="art1.jpg"
-         alt="Artwork 1">
-   
-    <div class="gallery-caption">
+                        </span>
 
-        <h3>
 
-            Artwork 01
+                        <span class="art-info">
 
-        </h3>
+                            <strong
+                                data-en="Artwork 01"
+                                data-bn="শিল্পকর্ম ০১"
+                            >
+                                Artwork 01
+                            </strong>
 
-        <p>
 
-            Pencil Art
+                            <small
+                                data-en="2026"
+                                data-bn="২০২৬"
+                            >
+                                2026
+                            </small>
 
-        </p>
+                        </span>
 
-    </div>
+                    </button>
 
 
-</div>
 
+                    <!-- ART 02 -->
 
+                    <button
+                        class="art-item"
+                        type="button"
 
-<!--==================================
-            ARTWORK 2
-===================================-->
+                        data-lightbox
 
-<div class="gallery-item">
+                        data-image="images/art-02.jpg"
 
+                        data-title-en="Artwork 02"
+                        data-title-bn="শিল্পকর্ম ০২"
 
-    <img src="art2.jpg"
-         alt="Artwork 2">
-    
-    <div class="gallery-caption">
+                        data-date-en="2026"
+                        data-date-bn="২০২৬"
+                    >
 
-        <h3>
+                        <span class="art-image">
 
-            Artwork 02
+                            <img
+                                src="images/art-02.jpg"
+                                alt="Artwork 02"
+                                loading="lazy"
+                            >
 
-        </h3>
+                        </span>
 
-        <p>
 
-            Sketch
+                        <span class="art-info">
 
-        </p>
+                            <strong
+                                data-en="Artwork 02"
+                                data-bn="শিল্পকর্ম ০২"
+                            >
+                                Artwork 02
+                            </strong>
 
-    </div>
 
+                            <small
+                                data-en="2026"
+                                data-bn="২০২৬"
+                            >
+                                2026
+                            </small>
 
-</div>
+                        </span>
 
+                    </button>
 
 
-<!--==================================
-            ARTWORK 3
-===================================-->
 
-<div class="gallery-item">
+                    <!-- ART 03 -->
 
+                    <button
+                        class="art-item"
+                        type="button"
 
-    <img src="art3.jpg"
-         alt="Artwork 3">
-        
-    <div class="gallery-caption">
+                        data-lightbox
 
-        <h3>
+                        data-image="images/art-03.jpg"
 
-            Artwork 03
+                        data-title-en="Artwork 03"
+                        data-title-bn="শিল্পকর্ম ০৩"
 
-        </h3>
+                        data-date-en="2026"
+                        data-date-bn="২০২৬"
+                    >
 
-        <p>
+                        <span class="art-image">
 
-            Creative Art
+                            <img
+                                src="images/art-03.jpg"
+                                alt="Artwork 03"
+                                loading="lazy"
+                            >
 
-        </p>
+                        </span>
 
-    </div>
 
+                        <span class="art-info">
 
-</div>
+                            <strong
+                                data-en="Artwork 03"
+                                data-bn="শিল্পকর্ম ০৩"
+                            >
+                                Artwork 03
+                            </strong>
 
 
+                            <small
+                                data-en="2026"
+                                data-bn="২০২৬"
+                            >
+                                2026
+                            </small>
 
-<!--==================================
-            ARTWORK 4
-===================================-->
+                        </span>
 
-<div class="gallery-item">
+                    </button>
 
 
-    <img src="art4.jpg"
-         alt="Artwork 4">
 
-    <div class="gallery-caption">
+                    <!-- ART 04 -->
 
-        <h3>
+                    <button
+                        class="art-item"
+                        type="button"
 
-            Artwork 04
+                        data-lightbox
 
-        </h3>
+                        data-image="images/art-04.jpg"
 
-        <p>
+                        data-title-en="Artwork 04"
+                        data-title-bn="শিল্পকর্ম ০৪"
 
-            Drawing
+                        data-date-en="2026"
+                        data-date-bn="২০২৬"
+                    >
 
-        </p>
+                        <span class="art-image">
 
-    </div>
+                            <img
+                                src="images/art-04.jpg"
+                                alt="Artwork 04"
+                                loading="lazy"
+                            >
 
+                        </span>
 
-</div>
 
+                        <span class="art-info">
 
+                            <strong
+                                data-en="Artwork 04"
+                                data-bn="শিল্পকর্ম ০৪"
+                            >
+                                Artwork 04
+                            </strong>
 
-<!--==================================
-            ARTWORK 5
-===================================-->
 
-<div class="gallery-item">
+                            <small
+                                data-en="2026"
+                                data-bn="২০২৬"
+                            >
+                                2026
+                            </small>
 
+                        </span>
 
-    <img src="art5.jpg"
-         alt="Artwork 5">
+                    </button>
 
-    <div class="gallery-caption">
 
-        <h3>
 
-            Artwork 05
+                    <!-- ART 05 -->
 
-        </h3>
+                    <button
+                        class="art-item"
+                        type="button"
 
-        <p>
+                        data-lightbox
 
-            Pencil Sketch
+                        data-image="images/art-05.jpg"
 
-        </p>
+                        data-title-en="Artwork 05"
+                        data-title-bn="শিল্পকর্ম ০৫"
 
-    </div>
+                        data-date-en="2026"
+                        data-date-bn="২০২৬"
+                    >
 
+                        <span class="art-image">
 
-</div>
+                            <img
+                                src="images/art-05.jpg"
+                                alt="Artwork 05"
+                                loading="lazy"
+                            >
 
-<!--==================================
-            ARTWORK 6
-===================================-->
+                        </span>
 
-<div class="gallery-item">
 
-    <img src="art6.jpg" alt="Artwork 6">
+                        <span class="art-info">
 
-    <div class="gallery-caption">
+                            <strong
+                                data-en="Artwork 05"
+                                data-bn="শিল্পকর্ম ০৫"
+                            >
+                                Artwork 05
+                            </strong>
 
-        <h3>Artwork 06</h3>
 
-        <p>Portrait</p>
+                            <small
+                                data-en="2026"
+                                data-bn="২০২৬"
+                            >
+                                2026
+                            </small>
 
-    </div>
+                        </span>
 
-</div>
+                    </button>
 
 
-<!--==================================
-            ARTWORK 7
-===================================-->
 
-<div class="gallery-item">
+                    <!-- ART 06 -->
 
-    <img src="art7.jpg" alt="Artwork 7">
+                    <button
+                        class="art-item"
+                        type="button"
 
-    <div class="gallery-caption">
+                        data-lightbox
 
-        <h3>Artwork 07</h3>
+                        data-image="images/art-06.jpg"
 
-        <p>Creative Sketch</p>
+                        data-title-en="Artwork 06"
+                        data-title-bn="শিল্পকর্ম ০৬"
 
-    </div>
+                        data-date-en="2026"
+                        data-date-bn="২০২৬"
+                    >
 
-</div>
+                        <span class="art-image">
 
+                            <img
+                                src="images/art-06.jpg"
+                                alt="Artwork 06"
+                                loading="lazy"
+                            >
 
-<!--==================================
-            ARTWORK 8
-===================================-->
+                        </span>
 
-<div class="gallery-item">
 
-    <img src="art8.jpg" alt="Artwork 8">
+                        <span class="art-info">
 
-    <div class="gallery-caption">
+                            <strong
+                                data-en="Artwork 06"
+                                data-bn="শিল্পকর্ম ০৬"
+                            >
+                                Artwork 06
+                            </strong>
 
-        <h3>Artwork 08</h3>
 
-        <p>Traditional Art</p>
+                            <small
+                                data-en="2026"
+                                data-bn="২০২৬"
+                            >
+                                2026
+                            </small>
 
-    </div>
+                        </span>
 
-</div>
+                    </button>
 
 
-<!--==================================
-            ARTWORK 9
-===================================-->
+                </div>
 
-<div class="gallery-item">
+            </div>
 
-    <img src="art9.jpg" alt="Artwork 9">
+        </section>
 
-    <div class="gallery-caption">
 
-        <h3>Artwork 09</h3>
+    </main>
 
-        <p>Illustration</p>
 
-    </div>
 
-</div>
+    <!-- =====================================================
+         LIGHTBOX
+    ====================================================== -->
 
+    <dialog
+        class="art-lightbox"
+        id="artLightbox"
+    >
 
-<!--==================================
-            ARTWORK 10
-===================================-->
+        <div class="lightbox-inner">
 
-<div class="gallery-item">
 
-    <img src="art10.jpg" alt="Artwork 10">
-    <div class="gallery-caption">
+            <button
+                class="lightbox-close"
+                id="lightboxClose"
+                type="button"
+                aria-label="Close artwork"
+            >
+                ×
+            </button>
 
-        <h3>Artwork 10</h3>
 
-        <p>Digital Drawing</p>
+            <div class="lightbox-image-wrap">
 
-    </div>
+                <img
+                    id="lightboxImage"
+                    src=""
+                    alt=""
+                >
 
-</div>
+            </div>
 
-    </div>
 
-</section>
+            <div class="lightbox-info">
 
-</main>
+                <h2 id="lightboxTitle">
+                    Artwork
+                </h2>
 
 
-<!--==================================
-            LIGHTBOX
-===================================-->
+                <span id="lightboxDate">
+                    2026
+                </span>
 
-<div class="lightbox" id="lightbox">
+            </div>
 
-    <button class="lightbox-close" id="closeLightbox">
+        </div>
 
-        ✕
+    </dialog>
 
-    </button>
 
-    <button class="lightbox-prev" id="prevImage">
 
-        ❮
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
 
-    </button>
+    <footer class="site-footer">
 
-    <img id="lightboxImg" src="" alt="Artwork">
+        <div class="container footer-inner">
 
-    <button class="lightbox-next" id="nextImage">
+            <p
+                data-en="© 2026 Bijoy. Student · Artist · Lifelong Learner."
+                data-bn="© ২০২৬ বিজয়। শিক্ষার্থী · শিল্পী · আজীবন শিক্ষার্থী।"
+            >
+                © 2026 Bijoy. Student · Artist · Lifelong Learner.
+            </p>
 
-        ❯
 
-    </button>
+            <a
+                href="index.html"
+                class="text-link"
+                data-en="Back to home →"
+                data-bn="হোমে ফিরে যান →"
+            >
+                Back to home →
+            </a>
 
-    <div class="lightbox-counter" id="imageCounter">
+        </div>
 
-        1 / 10
+    </footer>
 
-    </div>
 
-</div>
 
-
-<!--==================================
-            FOOTER
-===================================-->
-
-<footer>
-
-    <p>
-
-        © 2026 Sarefull Islam Bijoy
-
-    </p>
-
-    <p>
-
-        Art Gallery
-
-    </p>
-
-</footer>
-
-
-<script src="script.js"></script>
-<script src="art.js"></script>
+    <script src="script.js"></script>
 
 </body>
+
 </html>
