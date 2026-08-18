@@ -1,195 +1,660 @@
-//==================================================
-//              BIJOY PORTFOLIO
-//                 script.js
-//==================================================
-"use strict";
+/* =========================================================
+   BIJOY PORTFOLIO — SCRIPT.JS
+   v26.M2.4 + Lightbox Guard Fix
+========================================================= */
 
-//==================================================
-//              SELECT ELEMENTS
-//==================================================
-const body = document.body;
-const menuBtn = document.getElementById("menuBtn");
-const closeBtn = document.getElementById("closeBtn");
-const sidebar = document.getElementById("sidebar");
-const themeBtn = document.getElementById("themeBtn");
 
-//==================================================
-//              SIDEBAR
-//==================================================
-function openSidebar() {
-  if (!sidebar) return;
-  sidebar.classList.add("active");
-}
+/* =========================================================
+   01. DOM READY
+========================================================= */
 
-function closeSidebar() {
-  if (!sidebar) return;
-  sidebar.classList.remove("active");
-}
+document.addEventListener("DOMContentLoaded", () => {
 
-if (menuBtn) {
-  menuBtn.addEventListener("click", openSidebar);
-}
 
-if (closeBtn) {
-  closeBtn.addEventListener("click", closeSidebar);
-}
+    /* =====================================================
+       02. ELEMENTS
+    ====================================================== */
 
-// ক্লিক আউটসাইডে সাইডবার বন্ধ
-document.addEventListener("click", (e) => {
-  if (
-    sidebar &&
-    sidebar.classList.contains("active") &&
-    !sidebar.contains(e.target) &&
-    menuBtn &&
-    !menuBtn.contains(e.target)
-  ) {
-    closeSidebar();
-  }
-});
+    const menuButton =
+        document.querySelector(
+            "[data-menu-toggle]"
+        );
 
-// ESC চাপলে বন্ধ
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") closeSidebar();
-});
+    const navigation =
+        document.querySelector(
+            ".site-nav"
+        );
 
-// সাইডবারের লিংকে ক্লিক করলে বন্ধ
-const navLinks = document.querySelectorAll(".sidebar a");
-navLinks.forEach((link) => {
-  link.addEventListener("click", closeSidebar);
-});
+    const themeButtons =
+        document.querySelectorAll(
+            "[data-theme-toggle]"
+        );
 
-//==================================================
-//              DARK MODE
-//==================================================
-const savedTheme = localStorage.getItem("theme");
-const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
+    const languageButtons =
+        document.querySelectorAll(
+            "[data-language-toggle]"
+        );
 
-function applyTheme(theme) {
-  if (theme === "dark") {
-    body.classList.add("dark");
-    if (themeBtn) themeBtn.textContent = "☀️";
-  } else {
-    body.classList.remove("dark");
-    if (themeBtn) themeBtn.textContent = "🌙";
-  }
-}
+    const bilingualElements =
+        document.querySelectorAll(
+            "[data-en][data-bn]"
+        );
 
-// প্রাথমিক থিম
-if (savedTheme) {
-  applyTheme(savedTheme);
-} else {
-  applyTheme(systemTheme.matches ? "dark" : "light");
-}
 
-// টগল বাটন
-if (themeBtn) {
-  themeBtn.addEventListener("click", () => {
-    const next = body.classList.contains("dark") ? "light" : "dark";
-    applyTheme(next);
-    localStorage.setItem("theme", next);
-  });
-}
+    /* =====================================================
+       03. MOBILE MENU
+    ====================================================== */
 
-// সিস্টেম থিম পরিবর্তন হলে ফলো করা
-systemTheme.addEventListener("change", (e) => {
-  if (localStorage.getItem("theme")) return;
-  applyTheme(e.matches ? "dark" : "light");
-});
+    if (menuButton && navigation) {
 
-//==================================================
-//              SCROLL TO TOP BUTTON
-//==================================================
-const scrollTopBtn = document.getElementById("scrollTopBtn");
+        menuButton.addEventListener(
+            "click",
+            () => {
 
-if (scrollTopBtn) {
-  // বাটন দেখানো / লুকানোর ফাংশন
-  const toggleScrollBtn = () => {
-    if (window.scrollY > 400) {
-      scrollTopBtn.classList.add("show");
-    } else {
-      scrollTopBtn.classList.remove("show");
+                const isOpen =
+                    navigation.classList.toggle(
+                        "is-open"
+                    );
+
+
+                menuButton.setAttribute(
+                    "aria-expanded",
+                    String(isOpen)
+                );
+
+
+                menuButton.setAttribute(
+                    "aria-label",
+                    isOpen
+                        ? "Close navigation"
+                        : "Open navigation"
+                );
+
+            }
+        );
+
+
+        /* Close menu after navigation */
+
+        const navigationLinks =
+            navigation.querySelectorAll(
+                "a"
+            );
+
+
+        navigationLinks.forEach(
+            (link) => {
+
+                link.addEventListener(
+                    "click",
+                    () => {
+
+                        navigation.classList.remove(
+                            "is-open"
+                        );
+
+
+                        menuButton.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+
+                        menuButton.setAttribute(
+                            "aria-label",
+                            "Open navigation"
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* Close menu when clicking outside */
+
+        document.addEventListener(
+            "click",
+            (event) => {
+
+                const clickedInsideMenu =
+                    navigation.contains(
+                        event.target
+                    );
+
+                const clickedMenuButton =
+                    menuButton.contains(
+                        event.target
+                    );
+
+
+                if (
+                    !clickedInsideMenu &&
+                    !clickedMenuButton
+                ) {
+
+                    navigation.classList.remove(
+                        "is-open"
+                    );
+
+
+                    menuButton.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+
+                    menuButton.setAttribute(
+                        "aria-label",
+                        "Open navigation"
+                    );
+
+                }
+
+            }
+        );
+
     }
-  };
 
-  window.addEventListener("scroll", toggleScrollBtn);
-  toggleScrollBtn(); // পেজ লোডের সময় চেক
 
-  // ক্লিক ইভেন্ট
-  scrollTopBtn.addEventListener("click", () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  });
-}
 
-//==================================================
-//              SCROLL ANIMATION
-//==================================================
-const animatedElements = document.querySelectorAll(
-  ".fade-up, .fade-left, .fade-right, .scale-in"
-);
+    /* =====================================================
+       04. THEME SYSTEM
+    ====================================================== */
 
-if (animatedElements.length > 0) {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = "1";
-          entry.target.style.transform = "translate(0,0)";
-          observer.unobserve(entry.target);
+    let currentTheme =
+        localStorage.getItem(
+            "bijoy-theme"
+        );
+
+
+    /*
+       If no saved theme exists,
+       follow the user's system preference.
+    */
+
+    if (
+        currentTheme !== "light" &&
+        currentTheme !== "dark"
+    ) {
+
+        currentTheme =
+            window.matchMedia(
+                "(prefers-color-scheme: dark)"
+            ).matches
+                ? "dark"
+                : "light";
+
+    }
+
+
+    function applyTheme() {
+
+        document.documentElement.setAttribute(
+            "data-theme",
+            currentTheme
+        );
+
+
+        themeButtons.forEach(
+            (button) => {
+
+                const icon =
+                    button.querySelector(
+                        ".theme-icon"
+                    );
+
+
+                if (icon) {
+
+                    icon.textContent =
+                        currentTheme === "dark"
+                            ? "☀"
+                            : "◐";
+
+                }
+
+
+                button.setAttribute(
+                    "aria-label",
+                    currentTheme === "dark"
+                        ? "Switch to light theme"
+                        : "Switch to dark theme"
+                );
+
+
+                button.setAttribute(
+                    "title",
+                    currentTheme === "dark"
+                        ? "Light theme"
+                        : "Dark theme"
+                );
+
+            }
+        );
+
+    }
+
+
+    applyTheme();
+
+
+    themeButtons.forEach(
+        (button) => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    currentTheme =
+                        currentTheme === "dark"
+                            ? "light"
+                            : "dark";
+
+
+                    localStorage.setItem(
+                        "bijoy-theme",
+                        currentTheme
+                    );
+
+
+                    applyTheme();
+
+                }
+            );
+
         }
-      });
-    },
-    { threshold: 0.15 }
-  );
+    );
 
-  animatedElements.forEach((el) => {
-    el.style.opacity = "0";
-    observer.observe(el);
-  });
-}
 
-//==================================================
-//              SMOOTH SCROLL FOR # LINKS
-//==================================================
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    const target = document.querySelector(this.getAttribute("href"));
-    if (target) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    /* =====================================================
+       05. LANGUAGE SYSTEM
+    ====================================================== */
+
+    let currentLanguage =
+        localStorage.getItem(
+            "bijoy-language"
+        );
+
+
+    /*
+       English is the default language.
+    */
+
+    if (
+        currentLanguage !== "en" &&
+        currentLanguage !== "bn"
+    ) {
+
+        currentLanguage = "en";
+
     }
-  });
+
+
+    function applyLanguage() {
+
+        bilingualElements.forEach(
+            (element) => {
+
+                const englishText =
+                    element.getAttribute(
+                        "data-en"
+                    );
+
+                const banglaText =
+                    element.getAttribute(
+                        "data-bn"
+                    );
+
+
+                if (
+                    currentLanguage === "bn" &&
+                    banglaText !== null
+                ) {
+
+                    element.textContent =
+                        banglaText;
+
+                } else if (
+                    englishText !== null
+                ) {
+
+                    element.textContent =
+                        englishText;
+
+                }
+
+            }
+        );
+
+
+        languageButtons.forEach(
+            (button) => {
+
+                button.textContent =
+                    currentLanguage === "en"
+                        ? "বাংলা"
+                        : "English";
+
+
+                button.setAttribute(
+                    "aria-label",
+                    currentLanguage === "en"
+                        ? "Switch to Bangla"
+                        : "Switch to English"
+                );
+
+
+                button.setAttribute(
+                    "title",
+                    currentLanguage === "en"
+                        ? "Switch to Bangla"
+                        : "Switch to English"
+                );
+
+            }
+        );
+
+
+        document.documentElement.lang =
+            currentLanguage === "bn"
+                ? "bn"
+                : "en";
+
+    }
+
+
+    applyLanguage();
+
+
+    languageButtons.forEach(
+        (button) => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    currentLanguage =
+                        currentLanguage === "en"
+                            ? "bn"
+                            : "en";
+
+
+                    localStorage.setItem(
+                        "bijoy-language",
+                        currentLanguage
+                    );
+
+
+                    applyLanguage();
+
+                }
+            );
+
+        }
+    );
+
+
+
+    /* =====================================================
+       06. CLOSE MOBILE MENU ON RESIZE
+    ====================================================== */
+
+    window.addEventListener(
+        "resize",
+        () => {
+
+            if (
+                window.innerWidth > 760 &&
+                navigation &&
+                menuButton
+            ) {
+
+                navigation.classList.remove(
+                    "is-open"
+                );
+
+
+                menuButton.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+
+                menuButton.setAttribute(
+                    "aria-label",
+                    "Open navigation"
+                );
+
+            }
+
+        }
+    );
+
+
+
+    /* =====================================================
+       07. REVEAL OBSERVER
+    ====================================================== */
+
+    const revealElements =
+        document.querySelectorAll(
+            "[data-reveal]"
+        );
+
+
+    if (
+        "IntersectionObserver" in window
+    ) {
+
+        const revealObserver =
+            new IntersectionObserver(
+                (entries, observer) => {
+
+                    entries.forEach(
+                        (entry) => {
+
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+                                entry.target.classList.add(
+                                    "is-visible"
+                                );
+
+
+                                observer.unobserve(
+                                    entry.target
+                                );
+
+                            }
+
+                        }
+                    );
+
+                },
+                {
+                    threshold: 0.12
+                }
+            );
+
+
+        revealElements.forEach(
+            (element) => {
+
+                revealObserver.observe(
+                    element
+                );
+
+            }
+        );
+
+    } else {
+
+        /*
+           Fallback for older browsers.
+        */
+
+        revealElements.forEach(
+            (element) => {
+
+                element.classList.add(
+                    "is-visible"
+                );
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       08. CURRENT YEAR
+    ====================================================== */
+
+    const yearElements =
+        document.querySelectorAll(
+            "[data-current-year]"
+        );
+
+
+    yearElements.forEach(
+        (element) => {
+
+            element.textContent =
+                new Date().getFullYear();
+
+        }
+    );
+
+
+    /* =========================================================
+       ART GALLERY — LIGHTBOX
+       Guarded to prevent errors on pages without lightbox
+    ========================================================= */
+
+    const artLightbox =
+        document.querySelector("#artLightbox");
+
+
+    if (artLightbox) {
+
+        const lightboxImage =
+            document.querySelector("#lightboxImage");
+
+        const lightboxTitle =
+            document.querySelector("#lightboxTitle");
+
+        const lightboxDate =
+            document.querySelector("#lightboxDate");
+
+        const lightboxClose =
+            document.querySelector("#lightboxClose");
+
+        const artItems =
+            document.querySelectorAll(
+                "[data-lightbox]"
+            );
+
+
+        artItems.forEach((item) => {
+
+            item.addEventListener("click", () => {
+
+                const image =
+                    item.dataset.image;
+
+                const title =
+                    currentLanguage === "bn"
+                        ? item.dataset.titleBn
+                        : item.dataset.titleEn;
+
+                const date =
+                    currentLanguage === "bn"
+                        ? item.dataset.dateBn
+                        : item.dataset.dateEn;
+
+
+                if (lightboxImage) {
+                    lightboxImage.src = image;
+                    lightboxImage.alt = title;
+                }
+
+                if (lightboxTitle) {
+                    lightboxTitle.textContent = title;
+                }
+
+                if (lightboxDate) {
+                    lightboxDate.textContent = date;
+                }
+
+
+                if (!artLightbox.open) {
+                    artLightbox.showModal();
+                }
+
+            });
+
+        });
+
+
+
+        /* =========================================================
+           CLOSE BUTTON
+        ========================================================= */
+
+        if (lightboxClose) {
+
+            lightboxClose.addEventListener(
+                "click",
+                () => {
+
+                    artLightbox.close();
+
+                }
+            );
+
+        }
+
+
+
+        /* =========================================================
+           CLICK BACKDROP TO CLOSE
+        ========================================================= */
+
+        artLightbox.addEventListener(
+            "click",
+            (event) => {
+
+                if (event.target === artLightbox) {
+
+                    artLightbox.close();
+
+                }
+
+            }
+        );
+
+
+
+        /* =========================================================
+           CLEAR IMAGE AFTER CLOSE
+        ========================================================= */
+
+        artLightbox.addEventListener(
+            "close",
+            () => {
+
+                if (lightboxImage) {
+                    lightboxImage.src = "";
+                }
+
+            }
+        );
+
+    }
+
 });
-
-//==================================================
-//              ACTIVE NAV LINK (scroll spy)
-//==================================================
-const sections = document.querySelectorAll("section[id]");
-const navItems = document.querySelectorAll(".sidebar a");
-
-window.addEventListener("scroll", () => {
-  let current = "";
-  sections.forEach((section) => {
-    const sectionTop = section.offsetTop - 100;
-    if (window.scrollY >= sectionTop) {
-      current = section.getAttribute("id");
-    }
-  });
-
-  navItems.forEach((link) => {
-    link.classList.remove("active");
-    if (link.getAttribute("href") === "#" + current) {
-      link.classList.add("active");
-    }
-  });
-});
-
-//==================================================
-//              CURRENT YEAR IN FOOTER
-//==================================================
-const yearEl = document.querySelector(".current-year");
-if (yearEl) {
-  yearEl.textContent = new Date().getFullYear();
-}
