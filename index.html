@@ -14,16 +14,28 @@
         name="description"
         content="Sarefull Islam Bijoy — Student, Artist & Lifelong Learner."
     >
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fbfcfe">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#07111f">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Sarefull Islam Bijoy">
+    <meta property="og:description" content="Sarefull Islam Bijoy — Student, Artist & Lifelong Learner.">
+    <link rel="icon" type="image/png" href="favicon.png">
 
     <meta
         name="author"
         content="Sarefull Islam Bijoy"
     >
 
+    <script>try{var t=localStorage.getItem("bijoy-theme");if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+    <script>try{if(sessionStorage.getItem("bijoy-pt")&&!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("pt-cover")}catch(e){}</script>
     <title>
         Sarefull Islam Bijoy — Student • Artist • Lifelong Learner
     </title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&family=Noto+Serif+Bengali:wght@400;500;600&display=swap" rel="stylesheet">
     <link
         rel="stylesheet"
         href="style.css"
@@ -101,6 +113,16 @@
                     Art Gallery
                 </a>
 
+                <a
+                    href="projects.html"
+                    class="nav-link page-link"
+                    data-en="Projects"
+                    data-bn="প্রজেক্ট"
+                >
+                    Projects
+                </a>
+
+
 
                 <a
                     href="#about"
@@ -117,7 +139,7 @@
                     data-en="Contact"
                     data-bn="যোগাযোগ"
                 >
-                    contact
+                    Contact
                 </a>
 
 
@@ -314,8 +336,8 @@
 
                         <div class="profile-frame-inner">
 
-                            <img
-                                src="profile.png"
+                            <img width="1100" height="1326" decoding="async" fetchpriority="high"
+                                src="profile.webp"
                                 alt="Sarefull Islam Bijoy"
                             >
 
@@ -402,6 +424,8 @@
 
 </div>
 
+
+        </section>
 
         <!-- =================================================
              ABOUT
@@ -731,7 +755,7 @@
 
                         <figure class="art-image-frame">
 
-                            <img
+                            <img width="2248" height="2810" decoding="async"
                                 src="art4.jpg"
                                 alt="Featured traditional artwork by Sarefull Islam Bijoy"
                                 loading="lazy"
@@ -993,6 +1017,124 @@
 
         </section>
 
+                <!-- =================================================
+             PROJECTS
+        ================================================== -->
+
+        <section
+            id="projects"
+            class="section projects-section"
+        >
+
+            <div class="container">
+
+                <div class="section-topline">
+                    <span class="section-number">
+                        v
+                    </span>
+                    <span
+                        class="section-label"
+                        data-en="Projects"
+                        data-bn="প্রজেক্ট"
+                    >
+                        Projects
+                    </span>
+                </div>
+
+                <div
+                    class="section-heading-row"
+                    data-reveal
+                >
+                    <h2
+                        class="section-title"
+                        data-en="Ideas taking shape."
+                        data-bn="রূপ নিচ্ছে ধারণাগুলো।"
+                    >
+                        Ideas taking shape.
+                    </h2>
+
+                    <p
+                        class="section-description"
+                        data-en="What I am planning and building."
+                        data-bn="আমি যা পরিকল্পনা ও তৈরি করছি।"
+                    >
+                        What I am planning and building.
+                    </p>
+                </div>
+
+                <div class="projects-grid" data-reveal>
+
+                    <a
+                        class="project-card"
+                        href="https://bijoyb19818686-islam.github.io/history-timeline/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <span
+                            class="project-status status-idea"
+                            data-en="Idea"
+                            data-bn="ধারণা"
+                        >Idea</span>
+
+                        <h3 class="project-title">History Timeline</h3>
+
+                        <span class="project-url">bijoyb19818686-islam.github.io/history-timeline</span>
+
+                        <span class="project-open">
+                            <span
+                                data-en="Open project"
+                                data-bn="প্রজেক্ট দেখুন"
+                            >Open project</span>
+                            <span aria-hidden="true">↗</span>
+                        </span>
+                    </a>
+                    <a
+                        class="project-card"
+                        href="https://sarefullbijoy.github.io/rongsuta-shanto/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <span
+                            class="project-status status-soon"
+                            data-en="Coming soon"
+                            data-bn="শীঘ্রই আসছে"
+                        >Coming soon</span>
+
+                        <h3 class="project-title">Rongsuta Shanto</h3>
+
+                        <span class="project-url">sarefullbijoy.github.io/rongsuta-shanto</span>
+
+                        <span class="project-open">
+                            <span
+                                data-en="Open project"
+                                data-bn="প্রজেক্ট দেখুন"
+                            >Open project</span>
+                            <span aria-hidden="true">↗</span>
+                        </span>
+                    </a>
+
+                </div>
+
+                <div class="projects-more">
+                    <a
+                        href="projects.html"
+                        class="text-link page-link"
+                    >
+                        <span
+                            data-en="View all projects"
+                            data-bn="সব প্রজেক্ট দেখুন"
+                        >
+                            View all projects
+                        </span>
+                        <span aria-hidden="true">↗</span>
+                    </a>
+                </div>
+
+            </div>
+
+        </section>
+
+
         <!-- =====================================================
              PHILOSOPHY / THOUGHTS
         ====================================================== -->
@@ -1004,7 +1146,7 @@
                 <div class="section-topline">
 
                     <span class="section-number">
-                        v
+                        vi
                     </span>
 
                     <span
@@ -1205,6 +1347,11 @@
 
 </a>
 
+                    </div>
+                </div>
+            </div>
+        </section>
+
 </main>
 
 
@@ -1229,7 +1376,7 @@
                 Student • Artist • Lifelong Learner
             </p>
             
-            <p>v26.M2.4</p>
+            <p>Fluidity — v26.U3.5 </p>
 
         </div>
 
