@@ -14,9 +14,21 @@
         name="description"
         content="Bijoy's education journey from primary school to college."
     >
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fbfcfe">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#07111f">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Sarefull Islam Bijoy">
+    <meta property="og:description" content="Bijoy's education journey from primary school to college.">
+    <link rel="icon" type="image/png" href="favicon.png">
 
+    <script>try{var t=localStorage.getItem("bijoy-theme");if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+    <script>try{if(sessionStorage.getItem("bijoy-pt")&&!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("pt-cover")}catch(e){}</script>
     <title>Education Journey — Bijoy</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&family=Noto+Serif+Bengali:wght@400;500;600&display=swap" rel="stylesheet">
     <link
         rel="stylesheet"
         href="style.css"
@@ -92,6 +104,16 @@
                 >
                     Art Gallery
                 </a>
+
+                <a
+                    href="projects.html"
+                    class="nav-link page-link"
+                    data-en="Projects"
+                    data-bn="প্রজেক্ট"
+                >
+                    Projects
+                </a>
+
 
 
                 <button
@@ -219,7 +241,7 @@
                             <!-- Primary image -->
                             <div class="education-image">
 
-                                <img
+                                <img width="719" height="542" decoding="async" loading="lazy"
                                     src="primary.jpg"
                                     alt="Chakbazar Government Primary School"
                                 >
@@ -294,7 +316,7 @@
 
                             <div class="education-image">
 
-                                <img
+                                <img width="720" height="535" decoding="async" loading="lazy"
                                     src="highschool.jpg"
                                     alt="Comilla High School"
                                 >
@@ -310,7 +332,7 @@
 
                                 <div class="institution-logo">
 
-                                    <img
+                                    <img width="720" height="720" decoding="async" loading="lazy"
                                         src="highschool-logo.jpg"
                                         alt="Comilla High School logo"
                                     >
@@ -386,7 +408,7 @@
 
                             <div class="education-image">
 
-                                <img
+                                <img width="720" height="534" decoding="async" loading="lazy"
                                     src="College.jpg"
                                     alt="Bhasha Sainik Ajit Guha Government College"
                                 >
@@ -402,7 +424,7 @@
 
                                 <div class="institution-logo">
 
-                                    <img
+                                    <img width="960" height="960" decoding="async" loading="lazy"
                                         src="college-logo.jpg"
                                         alt="Bhasha Sainik Ajit Guha Government College logo"
                                     >
@@ -422,7 +444,7 @@
                                 <h3>
 
                                     <a
-                                        href="www.cagc.edu.bd"
+                                        href="https://www.cagc.edu.bd"
                                         class="institution-link"
                                         data-en="Bhasha Sainik Ajit Guha Government College"
                                         data-bn="ভাষা সৈনিক অজিত গুহ সরকারি মহাবিদ্যালয়"
