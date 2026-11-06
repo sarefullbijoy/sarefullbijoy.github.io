@@ -1,200 +1,6 @@
 /* =========================================================
-   00. EARLY HANDLERS
-   Registered before the original theme/language handlers, so
-   they always run first in every browser (order-independent).
-========================================================= */
-
-(function () {
-
-    const root = document.documentElement;
-
-    const reduceMotion =
-        window.matchMedia(
-            "(prefers-reduced-motion: reduce)"
-        ).matches;
-
-    if (reduceMotion) return;
-
-    const EASE = "cubic-bezier(.65, 0, .25, 1)";
-
-    const circle = (x, y, r) =>
-        `circle(${r}px at ${x}px ${y}px)`;
-
-    const reach = (x, y) =>
-        Math.hypot(
-            Math.max(x, window.innerWidth - x),
-            Math.max(y, window.innerHeight - y)
-        ) + 8;
-
-    const pointOf = (event, element) => {
-
-        if (event.clientX || event.clientY) {
-            return { x: event.clientX, y: event.clientY };
-        }
-
-        const box = element.getBoundingClientRect();
-
-        return {
-            x: box.left + box.width / 2,
-            y: box.top + box.height / 2
-        };
-    };
-
-    /* THEME — circular wipe from the toggle
-       (plain overlay: identical on desktop and mobile, no View Transitions) */
-
-    const BG_LIGHT = "#fbfcfe";
-    const BG_DARK = "#07111f";
-
-    document
-        .querySelectorAll("[data-theme-toggle]")
-        .forEach((button) => {
-
-            let bypass = false;
-            let busy = false;
-
-            button.addEventListener("click", (event) => {
-
-                if (bypass) return;
-
-                event.stopImmediatePropagation();
-                event.preventDefault();
-
-                if (busy) return;
-                busy = true;
-
-                const { x, y } = pointOf(event, button);
-                const radius = reach(x, y);
-
-                const goingDark =
-                    root.getAttribute("data-theme") !== "dark";
-
-                const wipe = document.createElement("div");
-                wipe.className = "theme-wipe";
-                wipe.setAttribute("aria-hidden", "true");
-                wipe.style.background = goingDark ? BG_DARK : BG_LIGHT;
-                document.body.appendChild(wipe);
-
-                let switched = false;
-
-                const finish = () => {
-
-                    if (switched) return;
-                    switched = true;
-
-                    bypass = true;
-                    button.click();
-                    bypass = false;
-
-                    const fade = wipe.animate(
-                        [{ opacity: 1 }, { opacity: 0 }],
-                        { duration: 420, easing: "ease", fill: "forwards" }
-                    );
-
-                    fade.onfinish = () => {
-                        wipe.remove();
-                        busy = false;
-                    };
-
-                    setTimeout(() => {
-                        wipe.remove();
-                        busy = false;
-                    }, 900);
-                };
-
-                const grow = wipe.animate(
-                    [
-                        { clipPath: circle(x, y, 0) },
-                        { clipPath: circle(x, y, radius) }
-                    ],
-                    { duration: 520, easing: EASE, fill: "forwards" }
-                );
-
-                grow.onfinish = finish;
-                setTimeout(finish, 1000);
-
-            }, true);
-        });
-
-
-    /* LANGUAGE SWITCH — staggered fade/blur swap */
-
-    if (!reduceMotion) {
-
-        document
-            .querySelectorAll("[data-language-toggle]")
-            .forEach((button) => {
-
-                let busy = false;
-                let bypass = false;
-
-                button.addEventListener("click", (event) => {
-
-                    if (bypass) return;
-
-                    event.stopImmediatePropagation();
-                    event.preventDefault();
-
-                    if (busy) return;
-                    busy = true;
-
-                    const visible = Array
-                        .from(document.querySelectorAll("[data-en][data-bn]"))
-                        .filter((el) => {
-                            const box = el.getBoundingClientRect();
-                            return (
-                                box.width > 0 &&
-                                box.bottom > 0 &&
-                                box.top < window.innerHeight
-                            );
-                        });
-
-                    visible.forEach((el) => el.classList.add("lang-out"));
-                    button.classList.add("is-switching");
-
-                    setTimeout(() => {
-
-                        visible.forEach((el) => {
-                            el.classList.remove("lang-out");
-                            el.classList.add("lang-in");
-                        });
-
-                        bypass = true;
-                        button.click();
-                        bypass = false;
-
-                        void document.body.offsetWidth;
-
-                        visible.forEach((el, i) => {
-                            el.style.transitionDelay =
-                                `${Math.min(i, 24) * 28}ms`;
-                            el.classList.remove("lang-in");
-                            el.classList.add("lang-show");
-                        });
-
-                        setTimeout(() => {
-                            visible.forEach((el) => {
-                                el.classList.remove("lang-show");
-                                el.style.transitionDelay = "";
-                            });
-                            button.classList.remove("is-switching");
-                            busy = false;
-                        }, 600 + Math.min(visible.length, 24) * 28);
-
-                    }, 230);
-
-                }, true);
-            });
-    }
-
-
-
-})();
-
-
-/* =========================================================
    BIJOY PORTFOLIO — SCRIPT.JS
-   v26.M2.4 + Lightbox Guard Fix
+   Fluidity — v26.U3.5 + Lightbox Guard Fix
 ========================================================= */
 
 
@@ -957,7 +763,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (canHover) {
 
         document
-            .querySelectorAll(".skill-card, .philosophy-card, .project-card")
+            .querySelectorAll(".skill-card, .philosophy-card")
             .forEach((card) => {
                 card.addEventListener("pointermove", (e) => {
                     const box = card.getBoundingClientRect();
@@ -1315,6 +1121,67 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(leave, 1000);
     });
 
+
+    /* THEME — circular reveal from the toggle */
+
+    if (
+        !reduceMotion &&
+        typeof document.startViewTransition === "function"
+    ) {
+
+        let bypass = false;
+
+        document
+            .querySelectorAll("[data-theme-toggle]")
+            .forEach((button) => {
+
+                button.addEventListener("click", (event) => {
+
+                    if (bypass) return;
+
+                    event.stopImmediatePropagation();
+                    event.preventDefault();
+
+                    const { x, y } = pointOf(event, button);
+                    const radius = reach(x, y);
+
+                    root.classList.add("vt-theme");
+
+                    const transition =
+                        document.startViewTransition(() => {
+                            bypass = true;
+                            button.click();
+                            bypass = false;
+                        });
+
+                    transition.ready
+                        .then(() => {
+                            root.animate(
+                                {
+                                    clipPath: [
+                                        circle(x, y, 0),
+                                        circle(x, y, radius)
+                                    ]
+                                },
+                                {
+                                    duration: 700,
+                                    easing: EASE,
+                                    pseudoElement:
+                                        "::view-transition-new(root)"
+                                }
+                            );
+                        })
+                        .catch(() => { });
+
+                    transition.finished
+                        .finally(() => {
+                            root.classList.remove("vt-theme");
+                        });
+
+                }, true);
+            });
+    }
+
 });
 
 
@@ -1330,6 +1197,77 @@ document.addEventListener("DOMContentLoaded", () => {
         window.matchMedia(
             "(prefers-reduced-motion: reduce)"
         ).matches;
+
+
+    /* LANGUAGE SWITCH — staggered fade/blur swap */
+
+    if (!reduceMotion) {
+
+        document
+            .querySelectorAll("[data-language-toggle]")
+            .forEach((button) => {
+
+                let busy = false;
+                let bypass = false;
+
+                button.addEventListener("click", (event) => {
+
+                    if (bypass) return;
+
+                    event.stopImmediatePropagation();
+                    event.preventDefault();
+
+                    if (busy) return;
+                    busy = true;
+
+                    const visible = Array
+                        .from(document.querySelectorAll("[data-en][data-bn]"))
+                        .filter((el) => {
+                            const box = el.getBoundingClientRect();
+                            return (
+                                box.width > 0 &&
+                                box.bottom > 0 &&
+                                box.top < window.innerHeight
+                            );
+                        });
+
+                    visible.forEach((el) => el.classList.add("lang-out"));
+                    button.classList.add("is-switching");
+
+                    setTimeout(() => {
+
+                        visible.forEach((el) => {
+                            el.classList.remove("lang-out");
+                            el.classList.add("lang-in");
+                        });
+
+                        bypass = true;
+                        button.click();
+                        bypass = false;
+
+                        void document.body.offsetWidth;
+
+                        visible.forEach((el, i) => {
+                            el.style.transitionDelay =
+                                `${Math.min(i, 24) * 28}ms`;
+                            el.classList.remove("lang-in");
+                            el.classList.add("lang-show");
+                        });
+
+                        setTimeout(() => {
+                            visible.forEach((el) => {
+                                el.classList.remove("lang-show");
+                                el.style.transitionDelay = "";
+                            });
+                            button.classList.remove("is-switching");
+                            busy = false;
+                        }, 600 + Math.min(visible.length, 24) * 28);
+
+                    }, 230);
+
+                }, true);
+            });
+    }
 
 
     /* STAGGERED ENTRANCES (below-the-fold groups) */
@@ -1365,8 +1303,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ".skills-grid",
             ".education-timeline",
             ".social-links",
-            ".art-grid",
-            ".projects-grid"
+            ".art-grid"
         ].forEach((selector) => {
 
             document
@@ -1922,111 +1859,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    /* PAGE SKELETON — mirrors the real layout of each page */
-
-    const bar = (w, h, extra = "") =>
-        `<span class="sk" style="width:${w};height:${h};${extra}"></span>`;
-
-    const skeletonMarkup = () => {
-
-        const header = `
-            <div class="sk-header">
-                <div class="container sk-header-inner">
-                    ${bar("112px", "24px")}
-                    <span class="sk-spacer"></span>
-                    <span class="sk-navlinks">
-                        ${bar("52px", "14px")}${bar("92px", "14px")}
-                        ${bar("84px", "14px")}${bar("68px", "14px")}
-                        ${bar("56px", "14px")}
-                    </span>
-                    ${bar("66px", "34px", "border-radius:999px")}
-                    ${bar("38px", "38px", "border-radius:12px")}
-                </div>
-            </div>`;
-
-        const heroText = (lines) => `
-            ${bar("180px", "13px")}
-            ${bar("min(92%, 560px)", "clamp(40px, 7vw, 68px)")}
-            ${lines > 1 ? bar("min(64%, 400px)", "clamp(40px, 7vw, 68px)") : ""}
-            ${bar("min(74%, 420px)", "22px", "margin-top:8px")}
-            ${bar("100%", "13px")}
-            ${bar("86%", "13px")}`;
-
-        const pageHero = `
-            <div class="container sk-pagehero">
-                ${bar("170px", "13px")}
-                ${bar("min(88%, 640px)", "clamp(40px, 7vw, 72px)")}
-                ${bar("min(58%, 380px)", "clamp(40px, 7vw, 72px)")}
-                ${bar("min(70%, 460px)", "14px", "margin-top:10px")}
-            </div>`;
-
-        let body;
-
-        if (document.querySelector(".education-list")) {
-
-            const entry = () => `
-                <div class="sk-entry">
-                    ${bar("84px", "34px")}
-                    <div class="sk-card">
-                        ${bar("100%", "100%", "min-height:150px;border-radius:16px")}
-                        <div class="sk-card-text">
-                            ${bar("90px", "12px")}
-                            ${bar("80%", "24px")}
-                            ${bar("100%", "12px")}
-                            ${bar("66%", "12px")}
-                        </div>
-                    </div>
-                </div>`;
-
-            body = pageHero +
-                `<div class="container sk-list">${entry()}${entry()}${entry()}</div>`;
-
-        } else if (document.querySelector(".art-grid")) {
-
-            const tile = () =>
-                `<span class="sk sk-tile"></span>`;
-
-            body = pageHero +
-                `<div class="container sk-gallery">${tile().repeat(6)}</div>`;
-
-        } else if (document.querySelector(".projects-page")) {
-
-            const card = () => `
-                <div class="sk-project">
-                    ${bar("96px", "28px", "border-radius:999px")}
-                    ${bar("70%", "34px", "margin-top:10px")}
-                    ${bar("88%", "13px")}
-                    ${bar("120px", "16px", "margin-top:auto")}
-                </div>`;
-
-            body = pageHero +
-                `<div class="container sk-projects">${card()}${card()}</div>`;
-
-        } else {
-
-            body = `
-                <div class="container sk-grid">
-                    <div class="sk-col">${heroText(2)}
-                        ${bar("230px", "34px", "border-radius:999px;margin-top:12px")}
-                    </div>
-                    <span class="sk sk-photo"></span>
-                </div>
-                <div class="container sk-about">
-                    ${bar("150px", "13px")}
-                    ${bar("min(70%, 520px)", "40px")}
-                    ${bar("100%", "13px")}
-                    ${bar("92%", "13px")}
-                </div>
-                <div class="container sk-cards">
-                    <span class="sk sk-cardbox"></span>
-                    <span class="sk sk-cardbox"></span>
-                    <span class="sk sk-cardbox"></span>
-                </div>`;
-        }
-
-        return header + body;
-    };
-
     /* PAGE SKELETON — only if loading is genuinely slow */
 
     if (document.readyState !== "complete") {
@@ -2052,7 +1884,25 @@ document.addEventListener("DOMContentLoaded", () => {
             page.className = "sk-page";
             page.setAttribute("aria-hidden", "true");
 
-            page.innerHTML = skeletonMarkup();
+            page.innerHTML = `
+                <div class="sk-header">
+                    <span class="sk" style="width:120px;height:22px"></span>
+                    <span class="sk" style="width:64px;height:22px;margin-left:auto"></span>
+                    <span class="sk" style="width:64px;height:22px"></span>
+                </div>
+                <div class="sk-grid">
+                    <div class="sk-col">
+                        <span class="sk" style="width:200px;height:14px"></span>
+                        <span class="sk" style="width:92%;height:58px"></span>
+                        <span class="sk" style="width:64%;height:58px"></span>
+                        <span class="sk" style="width:70%;height:20px;margin-top:10px"></span>
+                        <span class="sk" style="width:100%;height:14px"></span>
+                        <span class="sk" style="width:88%;height:14px"></span>
+                        <span class="sk" style="width:46%;height:14px"></span>
+                    </div>
+                    <span class="sk sk-photo"></span>
+                </div>
+            `;
 
             document.body.appendChild(page);
 
