@@ -763,7 +763,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (canHover) {
 
         document
-            .querySelectorAll(".skill-card, .philosophy-card")
+            .querySelectorAll(".skill-card, .philosophy-card, .project-card")
             .forEach((card) => {
                 card.addEventListener("pointermove", (e) => {
                     const box = card.getBoundingClientRect();
