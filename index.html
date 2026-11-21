@@ -1,2152 +1,1389 @@
-/* =========================================================
-   BIJOY PORTFOLIO — SCRIPT.JS
-   Fluidity — v26.U3.5 + Lightbox Guard Fix
-========================================================= */
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
 
-/* =========================================================
-   01. DOM READY
-========================================================= */
+    <meta charset="UTF-8">
 
-document.addEventListener("DOMContentLoaded", () => {
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
+    <meta
+        name="description"
+        content="Sarefull Islam Bijoy — Student, Artist & Lifelong Learner."
+    >
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fbfcfe">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#07111f">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Sarefull Islam Bijoy">
+    <meta property="og:description" content="Sarefull Islam Bijoy — Student, Artist & Lifelong Learner.">
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <meta
+        name="author"
+        content="Sarefull Islam Bijoy"
+    >
 
-    /* =====================================================
-       02. ELEMENTS
-    ====================================================== */
+    <script>try{var t=localStorage.getItem("bijoy-theme");if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+    <script>try{if(sessionStorage.getItem("bijoy-pt")&&!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("pt-cover")}catch(e){}</script>
+    <title>
+        Sarefull Islam Bijoy — Student • Artist • Lifelong Learner
+    </title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&family=Noto+Serif+Bengali:wght@400;500;600&display=swap" rel="stylesheet">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         HEADER / NAVIGATION
+    ====================================================== -->
+
+    <header class="site-header">
+
+        <div class="container header-inner">
+
+
+            <!-- LOGO -->
+
+            <a
+                href="index.html"
+                class="site-logo"
+                aria-label="Sarefull Islam Bijoy — Home"
+            >
+
+                <span class="logo-name">
+                    Bijoy
+                </span>
+
+                <span class="logo-dot">
+                    .
+                </span>
+
+            </a>
+
+
+
+            <!-- MAIN MENU -->
 
-    const menuButton =
-        document.querySelector(
-            "[data-menu-toggle]"
-        );
+            <nav
+                class="site-nav"
+                aria-label="Main navigation"
+            >
 
-    const navigation =
-        document.querySelector(
-            ".site-nav"
-        );
+                <a
+                    href="index.html"
+                    class="nav-link active"
+                    aria-current="page"
+                    data-en="Home"
+                    data-bn="হোম"
+                >
+                    Home
+                </a>
+
 
-    const themeButtons =
-        document.querySelectorAll(
-            "[data-theme-toggle]"
-        );
+                <a
+                    href="education.html"
+                    class="nav-link page-link"
+                    data-en="Education &amp; Learning"
+                    data-bn="শিক্ষা ও শেখা"
+                >
+                    Education &amp; Learning
+                </a>
 
-    const languageButtons =
-        document.querySelectorAll(
-            "[data-language-toggle]"
-        );
 
-    const bilingualElements =
-        document.querySelectorAll(
-            "[data-en][data-bn]"
-        );
+                <a
+                    href="art.html"
+                    class="nav-link page-link"
+                    data-en="Art Gallery"
+                    data-bn="শিল্পকর্ম"
+                >
+                    Art Gallery
+                </a>
 
+                <a
+                    href="project.html"
+                    class="nav-link page-link"
+                    data-en="Projects"
+                    data-bn="প্রজেক্ট"
+                >
+                    Projects
+                </a>
 
-    /* =====================================================
-       03. MOBILE MENU
-    ====================================================== */
 
-    if (menuButton && navigation) {
 
-        menuButton.addEventListener(
-            "click",
-            () => {
+                <a
+                    href="#about"
+                    class="nav-link"
+                    data-en="About"
+                    data-bn="আমার সম্পর্কে"
+                >
+                    About
+                </a>
+                
+                <a
+                    href="#contact"
+                    class="nav-link"
+                    data-en="Contact"
+                    data-bn="যোগাযোগ"
+                >
+                    Contact
+                </a>
 
-                const isOpen =
-                    navigation.classList.toggle(
-                        "is-open"
-                    );
 
+                <!-- LANGUAGE -->
 
-                menuButton.setAttribute(
-                    "aria-expanded",
-                    String(isOpen)
-                );
+                <button
+                    type="button"
+                    class="language-toggle"
+                    data-language-toggle
+                    aria-label="Switch to Bangla"
+                >
+                    বাংলা
+                </button>
 
 
-                menuButton.setAttribute(
-                    "aria-label",
-                    isOpen
-                        ? "Close navigation"
-                        : "Open navigation"
-                );
+                <!-- THEME -->
 
-            }
-        );
+                <button
+                    type="button"
+                    class="theme-toggle"
+                    data-theme-toggle
+                    aria-label="Switch theme"
+                >
 
+                    <span
+                        class="theme-icon"
+                        aria-hidden="true"
+                    >
+                        ◐
+                    </span>
 
-        /* Close menu after navigation */
+                </button>
 
-        const navigationLinks =
-            navigation.querySelectorAll(
-                "a"
-            );
+            </nav>
 
 
-        navigationLinks.forEach(
-            (link) => {
 
-                link.addEventListener(
-                    "click",
-                    () => {
+            <!-- MOBILE MENU -->
 
-                        navigation.classList.remove(
-                            "is-open"
-                        );
+            <button
+                type="button"
+                class="menu-toggle"
+                data-menu-toggle
+                aria-label="Open navigation"
+                aria-expanded="false"
+            >
 
+                <span></span>
+                <span></span>
+                <span></span>
 
-                        menuButton.setAttribute(
-                            "aria-expanded",
-                            "false"
-                        );
+            </button>
 
+        </div>
 
-                        menuButton.setAttribute(
-                            "aria-label",
-                            "Open navigation"
-                        );
+    </header>
 
-                    }
-                );
 
-            }
-        );
 
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
 
-        /* Close menu when clicking outside */
+    <main>
 
-        document.addEventListener(
-            "click",
-            (event) => {
 
-                const clickedInsideMenu =
-                    navigation.contains(
-                        event.target
-                    );
+        <!-- =================================================
+             HERO
+        ================================================== -->
 
-                const clickedMenuButton =
-                    menuButton.contains(
-                        event.target
-                    );
+        <section class="hero">
 
+            <div class="container hero-grid">
 
-                if (
-                    !clickedInsideMenu &&
-                    !clickedMenuButton
-                ) {
 
-                    navigation.classList.remove(
-                        "is-open"
-                    );
+                <!-- HERO TEXT -->
 
+                <div
+                    class="hero-content"
+                    data-reveal
+                >
 
-                    menuButton.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
+                    <div class="hero-kicker">
 
+                        <span
+                            class="kicker-line"
+                            aria-hidden="true"
+                        ></span>
 
-                    menuButton.setAttribute(
-                        "aria-label",
-                        "Open navigation"
-                    );
+                        <span>
+                            Student • Artist • Lifelong Learner
+                        </span>
 
-                }
-
-            }
-        );
-
-    }
-
-
-
-    /* =====================================================
-       04. THEME SYSTEM
-    ====================================================== */
-
-    let currentTheme =
-        localStorage.getItem(
-            "bijoy-theme"
-        );
-
-
-    /*
-       If no saved theme exists,
-       follow the user's system preference.
-    */
-
-    if (
-        currentTheme !== "light" &&
-        currentTheme !== "dark"
-    ) {
-
-        currentTheme =
-            window.matchMedia(
-                "(prefers-color-scheme: dark)"
-            ).matches
-                ? "dark"
-                : "light";
-
-    }
-
-
-    function applyTheme() {
-
-        document.documentElement.setAttribute(
-            "data-theme",
-            currentTheme
-        );
-
-
-        themeButtons.forEach(
-            (button) => {
-
-                const icon =
-                    button.querySelector(
-                        ".theme-icon"
-                    );
-
-
-                if (icon) {
-
-                    icon.textContent =
-                        currentTheme === "dark"
-                            ? "☀"
-                            : "◐";
-
-                }
-
-
-                button.setAttribute(
-                    "aria-label",
-                    currentTheme === "dark"
-                        ? "Switch to light theme"
-                        : "Switch to dark theme"
-                );
-
-
-                button.setAttribute(
-                    "title",
-                    currentTheme === "dark"
-                        ? "Light theme"
-                        : "Dark theme"
-                );
-
-            }
-        );
-
-    }
-
-
-    applyTheme();
-
-
-    themeButtons.forEach(
-        (button) => {
-
-            button.addEventListener(
-                "click",
-                () => {
-
-                    currentTheme =
-                        currentTheme === "dark"
-                            ? "light"
-                            : "dark";
-
-
-                    localStorage.setItem(
-                        "bijoy-theme",
-                        currentTheme
-                    );
-
-
-                    applyTheme();
-
-                }
-            );
-
-        }
-    );
-
-
-
-    /* =====================================================
-       05. LANGUAGE SYSTEM
-    ====================================================== */
-
-    let currentLanguage =
-        localStorage.getItem(
-            "bijoy-language"
-        );
-
-
-    /*
-       English is the default language.
-    */
-
-    if (
-        currentLanguage !== "en" &&
-        currentLanguage !== "bn"
-    ) {
-
-        currentLanguage = "en";
-
-    }
-
-
-    function applyLanguage() {
-
-        bilingualElements.forEach(
-            (element) => {
-
-                const englishText =
-                    element.getAttribute(
-                        "data-en"
-                    );
-
-                const banglaText =
-                    element.getAttribute(
-                        "data-bn"
-                    );
-
-
-                if (
-                    currentLanguage === "bn" &&
-                    banglaText !== null
-                ) {
-
-                    element.textContent =
-                        banglaText;
-
-                } else if (
-                    englishText !== null
-                ) {
-
-                    element.textContent =
-                        englishText;
-
-                }
-
-            }
-        );
-
-
-        languageButtons.forEach(
-            (button) => {
-
-                button.textContent =
-                    currentLanguage === "en"
-                        ? "বাংলা"
-                        : "English";
-
-
-                button.setAttribute(
-                    "aria-label",
-                    currentLanguage === "en"
-                        ? "Switch to Bangla"
-                        : "Switch to English"
-                );
-
-
-                button.setAttribute(
-                    "title",
-                    currentLanguage === "en"
-                        ? "Switch to Bangla"
-                        : "Switch to English"
-                );
-
-            }
-        );
-
-
-        document.documentElement.lang =
-            currentLanguage === "bn"
-                ? "bn"
-                : "en";
-
-    }
-
-
-    applyLanguage();
-
-
-    languageButtons.forEach(
-        (button) => {
-
-            button.addEventListener(
-                "click",
-                () => {
-
-                    currentLanguage =
-                        currentLanguage === "en"
-                            ? "bn"
-                            : "en";
-
-
-                    localStorage.setItem(
-                        "bijoy-language",
-                        currentLanguage
-                    );
-
-
-                    applyLanguage();
-
-                }
-            );
-
-        }
-    );
-
-
-
-    /* =====================================================
-       06. CLOSE MOBILE MENU ON RESIZE
-    ====================================================== */
-
-    window.addEventListener(
-        "resize",
-        () => {
-
-            if (
-                window.innerWidth > 760 &&
-                navigation &&
-                menuButton
-            ) {
-
-                navigation.classList.remove(
-                    "is-open"
-                );
-
-
-                menuButton.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-
-                menuButton.setAttribute(
-                    "aria-label",
-                    "Open navigation"
-                );
-
-            }
-
-        }
-    );
-
-
-
-    /* =====================================================
-       07. REVEAL OBSERVER
-    ====================================================== */
-
-    const revealElements =
-        document.querySelectorAll(
-            "[data-reveal]"
-        );
-
-
-    if (
-        "IntersectionObserver" in window
-    ) {
-
-        const revealObserver =
-            new IntersectionObserver(
-                (entries, observer) => {
-
-                    entries.forEach(
-                        (entry) => {
-
-                            if (
-                                entry.isIntersecting
-                            ) {
-
-                                entry.target.classList.add(
-                                    "is-visible"
-                                );
-
-
-                                observer.unobserve(
-                                    entry.target
-                                );
-
-                            }
-
-                        }
-                    );
-
-                },
-                {
-                    threshold: 0.12
-                }
-            );
-
-
-        revealElements.forEach(
-            (element) => {
-
-                revealObserver.observe(
-                    element
-                );
-
-            }
-        );
-
-    } else {
-
-        /*
-           Fallback for older browsers.
-        */
-
-        revealElements.forEach(
-            (element) => {
-
-                element.classList.add(
-                    "is-visible"
-                );
-
-            }
-        );
-
-    }
-
-
-
-    /* =====================================================
-       08. CURRENT YEAR
-    ====================================================== */
-
-    const yearElements =
-        document.querySelectorAll(
-            "[data-current-year]"
-        );
-
-
-    yearElements.forEach(
-        (element) => {
-
-            element.textContent =
-                new Date().getFullYear();
-
-        }
-    );
-
-
-    /* =========================================================
-       ART GALLERY — LIGHTBOX
-       Guarded to prevent errors on pages without lightbox
-    ========================================================= */
-
-    const artLightbox =
-        document.querySelector("#artLightbox");
-
-
-    if (artLightbox) {
-
-        const lightboxImage =
-            document.querySelector("#lightboxImage");
-
-        const lightboxTitle =
-            document.querySelector("#lightboxTitle");
-
-        const lightboxDate =
-            document.querySelector("#lightboxDate");
-
-        const lightboxClose =
-            document.querySelector("#lightboxClose");
-
-        const artItems =
-            document.querySelectorAll(
-                "[data-lightbox]"
-            );
-
-
-        artItems.forEach((item) => {
-
-            item.addEventListener("click", () => {
-
-                const image =
-                    item.dataset.image;
-
-                const title =
-                    currentLanguage === "bn"
-                        ? item.dataset.titleBn
-                        : item.dataset.titleEn;
-
-                const date =
-                    currentLanguage === "bn"
-                        ? item.dataset.dateBn
-                        : item.dataset.dateEn;
-
-
-                if (lightboxImage) {
-                    lightboxImage.src = image;
-                    lightboxImage.alt = title;
-                }
-
-                if (lightboxTitle) {
-                    lightboxTitle.textContent = title;
-                }
-
-                if (lightboxDate) {
-                    lightboxDate.textContent = date;
-                }
-
-
-                if (!artLightbox.open) {
-                    artLightbox.showModal();
-                }
-
-            });
-
-        });
-
-
-
-        /* =========================================================
-           CLOSE BUTTON
-        ========================================================= */
-
-        if (lightboxClose) {
-
-            lightboxClose.addEventListener(
-                "click",
-                () => {
-
-                    artLightbox.close();
-
-                }
-            );
-
-        }
-
-
-
-        /* =========================================================
-           CLICK BACKDROP TO CLOSE
-        ========================================================= */
-
-        artLightbox.addEventListener(
-            "click",
-            (event) => {
-
-                if (event.target === artLightbox) {
-
-                    artLightbox.close();
-
-                }
-
-            }
-        );
-
-
-
-        /* =========================================================
-           CLEAR IMAGE AFTER CLOSE
-        ========================================================= */
-
-        artLightbox.addEventListener(
-            "close",
-            () => {
-
-                if (lightboxImage) {
-                    lightboxImage.src = "";
-                }
-
-            }
-        );
-
-    }
-
-});
-
-
-/* =========================================================
-   99. REFINEMENT LAYER (visual polish only)
-========================================================= */
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    const reduceMotion =
-        window.matchMedia(
-            "(prefers-reduced-motion: reduce)"
-        ).matches;
-
-    const canHover =
-        window.matchMedia(
-            "(hover: hover)"
-        ).matches;
-
-    const header =
-        document.querySelector(".site-header");
-
-
-    /* SCROLL PROGRESS + HEADER DEPTH */
-
-    const bar = document.createElement("div");
-    bar.className = "scroll-progress";
-    bar.setAttribute("aria-hidden", "true");
-    document.body.appendChild(bar);
-
-    let ticking = false;
-
-    const onScroll = () => {
-
-        if (ticking) return;
-        ticking = true;
-
-        requestAnimationFrame(() => {
-
-            const max =
-                document.documentElement.scrollHeight -
-                window.innerHeight;
-
-            const ratio =
-                max > 0
-                    ? Math.min(window.scrollY / max, 1)
-                    : 0;
-
-            bar.style.transform = `scaleX(${ratio})`;
-
-            if (header) {
-                header.classList.toggle(
-                    "is-scrolled",
-                    window.scrollY > 8
-                );
-            }
-
-            ticking = false;
-        });
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-
-
-    /* SCROLL REVEAL (below-the-fold only) */
-
-    if (!reduceMotion && "IntersectionObserver" in window) {
-
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("is-visible");
-                        observer.unobserve(entry.target);
-                    }
-                });
-            },
-            {
-                threshold: 0.12,
-                rootMargin: "0px 0px -6% 0px"
-            }
-        );
-
-        document
-            .querySelectorAll("[data-reveal]")
-            .forEach((el) => {
-
-                if (el.closest(".hero")) return;
-
-                if (
-                    el.getBoundingClientRect().top <
-                    window.innerHeight * 0.9
-                ) return;
-
-                el.classList.add("reveal-init");
-                observer.observe(el);
-            });
-    }
-
-
-    /* HOVER-ONLY EFFECTS */
-
-    if (canHover) {
-
-        document
-            .querySelectorAll(".skill-card, .philosophy-card, .project-card")
-            .forEach((card) => {
-                card.addEventListener("pointermove", (e) => {
-                    const box = card.getBoundingClientRect();
-                    card.style.setProperty("--mx", `${e.clientX - box.left}px`);
-                    card.style.setProperty("--my", `${e.clientY - box.top}px`);
-                });
-            });
-
-        const visual = document.querySelector(".hero-visual");
-
-        if (visual && !reduceMotion) {
-
-            visual.addEventListener("pointermove", (e) => {
-                const box = visual.getBoundingClientRect();
-                const x = (e.clientX - box.left) / box.width - 0.5;
-                const y = (e.clientY - box.top) / box.height - 0.5;
-                visual.style.setProperty("--px", `${x * 14}px`);
-                visual.style.setProperty("--py", `${y * 14}px`);
-            });
-
-            visual.addEventListener("pointerleave", () => {
-                visual.style.setProperty("--px", "0px");
-                visual.style.setProperty("--py", "0px");
-            });
-        }
-    }
-
-
-    /* NAV SCROLL-SPY (home page only) */
-
-    const spyLinks = Array.from(
-        document.querySelectorAll('.site-nav .nav-link[href^="#"]')
-    );
-
-    const homeLink =
-        document.querySelector(
-            '.site-nav .nav-link[aria-current="page"]'
-        );
-
-    const targets = spyLinks
-        .map((a) => document.querySelector(a.getAttribute("href")))
-        .filter(Boolean);
-
-    if (homeLink && targets.length) {
-
-        const spy = () => {
-
-            const y = window.scrollY + 140;
-            let current = null;
-
-            targets.forEach((t) => {
-                if (
-                    y >= t.offsetTop &&
-                    y < t.offsetTop + t.offsetHeight
-                ) current = t.id;
-            });
-
-            if (
-                window.innerHeight + window.scrollY >=
-                document.documentElement.scrollHeight - 4
-            ) current = targets[targets.length - 1].id;
-
-            spyLinks.forEach((a) => {
-                a.classList.toggle(
-                    "active",
-                    a.getAttribute("href") === `#${current}`
-                );
-            });
-
-            homeLink.classList.toggle(
-                "active",
-                y < targets[0].offsetTop
-            );
-        };
-
-        window.addEventListener("scroll", spy, { passive: true });
-        spy();
-    }
-
-});
-
-
-/* =========================================================
-   100. UPGRADE LAYER (visual polish only)
-========================================================= */
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    const reduceMotion =
-        window.matchMedia(
-            "(prefers-reduced-motion: reduce)"
-        ).matches;
-
-
-    /* BACK TO TOP */
-
-    const topButton = document.createElement("button");
-
-    topButton.type = "button";
-    topButton.className = "back-to-top";
-    topButton.setAttribute("aria-label", "Back to top");
-    topButton.textContent = "↑";
-
-    topButton.addEventListener("click", () => {
-        window.scrollTo({
-            top: 0,
-            behavior: reduceMotion ? "auto" : "smooth"
-        });
-    });
-
-    document.body.appendChild(topButton);
-
-
-    /* TIMELINE LINE + ART DEPTH */
-
-    const timeline =
-        document.querySelector(".education-timeline");
-
-    if (timeline) {
-        if ("IntersectionObserver" in window && !reduceMotion) {
-            const timelineObserver = new IntersectionObserver(
-                (entries) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            timeline.classList.add("tl-live");
-                            timelineObserver.disconnect();
-                        }
-                    });
-                },
-                { threshold: 0.3 }
-            );
-            timelineObserver.observe(timeline);
-        } else {
-            timeline.classList.add("tl-live");
-        }
-    }
-
-    const artFrame =
-        document.querySelector(
-            ".home-art-feature .art-image-frame"
-        );
-
-    let ticking = false;
-
-    const onScroll = () => {
-
-        if (ticking) return;
-        ticking = true;
-
-        requestAnimationFrame(() => {
-
-            topButton.classList.toggle(
-                "is-shown",
-                window.scrollY > 600
-            );
-
-            if (artFrame && !reduceMotion) {
-                const box = artFrame.getBoundingClientRect();
-                const offset =
-                    box.top + box.height / 2 - window.innerHeight / 2;
-                const shift =
-                    Math.max(-16, Math.min(16, offset * -0.04));
-                artFrame.style.setProperty("--ay", `${shift.toFixed(1)}px`);
-            }
-
-            ticking = false;
-        });
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-
-});
-
-
-/* =========================================================
-   101. PAGE + THEME TRANSITIONS
-   Circular reveal that starts from the exact click point.
-========================================================= */
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    const root = document.documentElement;
-
-    const reduceMotion =
-        window.matchMedia(
-            "(prefers-reduced-motion: reduce)"
-        ).matches;
-
-    const EASE = "cubic-bezier(.65, 0, .25, 1)";
-    const PT_KEY = "bijoy-pt";
-
-    /*PT-HERE*/const here = { href: location.href, origin: location.origin, path: location.pathname, search: location.search };
-
-    const tidy = (p) => p.replace(/index\.html$/, "");
-
-    const circle = (x, y, r) =>
-        `circle(${r}px at ${x}px ${y}px)`;
-
-    const reach = (x, y) =>
-        Math.hypot(
-            Math.max(x, window.innerWidth - x),
-            Math.max(y, window.innerHeight - y)
-        ) + 8;
-
-    const pointOf = (event, element) => {
-
-        if (event.clientX || event.clientY) {
-            return { x: event.clientX, y: event.clientY };
-        }
-
-        const box = element.getBoundingClientRect();
-
-        return {
-            x: box.left + box.width / 2,
-            y: box.top + box.height / 2
-        };
-    };
-
-    const makeOverlay = () => {
-        const overlay = document.createElement("div");
-        overlay.className = "pt-overlay";
-        overlay.setAttribute("aria-hidden", "true");
-        document.body.appendChild(overlay);
-        return overlay;
-    };
-
-    const save = (point) => {
-        try {
-            sessionStorage.setItem(PT_KEY, JSON.stringify(point));
-        } catch (error) { }
-    };
-
-    const load = () => {
-        try {
-            const value = sessionStorage.getItem(PT_KEY);
-            sessionStorage.removeItem(PT_KEY);
-            return value ? JSON.parse(value) : null;
-        } catch (error) {
-            return null;
-        }
-    };
-
-
-    /* ARRIVAL — reveal the new page from the click point */
-
-    /*PT-ENTER*/const arrival = load();
-
-    if (arrival && !reduceMotion) {
-
-        const { x, y } = arrival;
-        const radius = reach(x, y);
-        const overlay = makeOverlay();
-
-        overlay.style.clipPath = circle(x, y, radius);
-        root.classList.remove("pt-cover");
-
-        const reveal = overlay.animate(
-            [
-                { clipPath: circle(x, y, radius) },
-                { clipPath: circle(x, y, 0) }
-            ],
-            {
-                duration: 700,
-                delay: 60,
-                easing: EASE,
-                fill: "both"
-            }
-        );
-
-        reveal.onfinish = () => overlay.remove();
-
-    } else {
-        root.classList.remove("pt-cover");
-    }
-
-    window.addEventListener("pageshow", (event) => {
-        if (event.persisted) {
-            root.classList.remove("pt-cover");
-            document
-                .querySelectorAll(".pt-overlay")
-                .forEach((el) => el.remove());
-        }
-    });
-
-
-    /* DEPARTURE — expand from the clicked link */
-
-    document.addEventListener("click", (event) => {
-
-        if (
-            reduceMotion ||
-            event.defaultPrevented ||
-            event.button !== 0 ||
-            event.metaKey ||
-            event.ctrlKey ||
-            event.shiftKey ||
-            event.altKey
-        ) return;
-
-        const link =
-            event.target.closest &&
-            event.target.closest("a[href]");
-
-        if (
-            !link ||
-            link.target === "_blank" ||
-            link.hasAttribute("download")
-        ) return;
-
-        let url;
-
-        try {
-            url = new URL(link.getAttribute("href"), here.href);
-        } catch (error) {
-            return;
-        }
-
-        if (
-            !/^https?:$/.test(url.protocol) ||
-            url.origin !== here.origin ||
-            (
-                tidy(url.pathname) === tidy(here.path) &&
-                url.search === here.search
-            )
-        ) return;
-
-        event.preventDefault();
-
-        const { x, y } = pointOf(event, link);
-        const radius = reach(x, y);
-        const overlay = makeOverlay();
-
-        let left = false;
-
-        const leave = () => {
-            if (left) return;
-            left = true;
-            /*PT-NAV*/save({ x, y }); window.location.href = url.href;
-        };
-
-        const cover = overlay.animate(
-            [
-                { clipPath: circle(x, y, 0) },
-                { clipPath: circle(x, y, radius) }
-            ],
-            {
-                duration: 600,
-                easing: EASE,
-                fill: "forwards"
-            }
-        );
-
-        cover.onfinish = leave;
-        setTimeout(leave, 1000);
-    });
-
-
-    /* THEME — circular reveal from the toggle */
-
-    if (
-        !reduceMotion &&
-        typeof document.startViewTransition === "function"
-    ) {
-
-        let bypass = false;
-
-        document
-            .querySelectorAll("[data-theme-toggle]")
-            .forEach((button) => {
-
-                button.addEventListener("click", (event) => {
-
-                    if (bypass) return;
-
-                    event.stopImmediatePropagation();
-                    event.preventDefault();
-
-                    const { x, y } = pointOf(event, button);
-                    const radius = reach(x, y);
-
-                    root.classList.add("vt-theme");
-
-                    const transition =
-                        document.startViewTransition(() => {
-                            bypass = true;
-                            button.click();
-                            bypass = false;
-                        });
-
-                    transition.ready
-                        .then(() => {
-                            root.animate(
-                                {
-                                    clipPath: [
-                                        circle(x, y, 0),
-                                        circle(x, y, radius)
-                                    ]
-                                },
-                                {
-                                    duration: 700,
-                                    easing: EASE,
-                                    pseudoElement:
-                                        "::view-transition-new(root)"
-                                }
-                            );
-                        })
-                        .catch(() => { });
-
-                    transition.finished
-                        .finally(() => {
-                            root.classList.remove("vt-theme");
-                        });
-
-                }, true);
-            });
-    }
-
-});
-
-
-/* =========================================================
-   102. TYPOGRAPHY + MOTION POLISH
-========================================================= */
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    const root = document.documentElement;
-
-    const reduceMotion =
-        window.matchMedia(
-            "(prefers-reduced-motion: reduce)"
-        ).matches;
-
-
-    /* LANGUAGE SWITCH — staggered fade/blur swap */
-
-    if (!reduceMotion) {
-
-        document
-            .querySelectorAll("[data-language-toggle]")
-            .forEach((button) => {
-
-                let busy = false;
-                let bypass = false;
-
-                button.addEventListener("click", (event) => {
-
-                    if (bypass) return;
-
-                    event.stopImmediatePropagation();
-                    event.preventDefault();
-
-                    if (busy) return;
-                    busy = true;
-
-                    const visible = Array
-                        .from(document.querySelectorAll("[data-en][data-bn]"))
-                        .filter((el) => {
-                            const box = el.getBoundingClientRect();
-                            return (
-                                box.width > 0 &&
-                                box.bottom > 0 &&
-                                box.top < window.innerHeight
-                            );
-                        });
-
-                    visible.forEach((el) => el.classList.add("lang-out"));
-                    button.classList.add("is-switching");
-
-                    setTimeout(() => {
-
-                        visible.forEach((el) => {
-                            el.classList.remove("lang-out");
-                            el.classList.add("lang-in");
-                        });
-
-                        bypass = true;
-                        button.click();
-                        bypass = false;
-
-                        void document.body.offsetWidth;
-
-                        visible.forEach((el, i) => {
-                            el.style.transitionDelay =
-                                `${Math.min(i, 24) * 28}ms`;
-                            el.classList.remove("lang-in");
-                            el.classList.add("lang-show");
-                        });
-
-                        setTimeout(() => {
-                            visible.forEach((el) => {
-                                el.classList.remove("lang-show");
-                                el.style.transitionDelay = "";
-                            });
-                            button.classList.remove("is-switching");
-                            busy = false;
-                        }, 600 + Math.min(visible.length, 24) * 28);
-
-                    }, 230);
-
-                }, true);
-            });
-    }
-
-
-    /* STAGGERED ENTRANCES (below-the-fold groups) */
-
-    if (!reduceMotion && "IntersectionObserver" in window) {
-
-        const groupObserver = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-
-                    if (!entry.isIntersecting) return;
-
-                    const group = entry.target;
-                    const items =
-                        group.querySelectorAll(":scope > .st-item");
-
-                    group.classList.add("is-in");
-                    groupObserver.unobserve(group);
-
-                    setTimeout(() => {
-                        group.classList.remove("stagger-init", "is-in");
-                        items.forEach((item) => {
-                            item.classList.remove("st-item");
-                            item.style.removeProperty("--i");
-                        });
-                    }, 1500 + items.length * 140);
-                });
-            },
-            { threshold: 0.15 }
-        );
-
-        [
-            ".skills-grid",
-            ".education-timeline",
-            ".social-links",
-            ".art-grid"
-        ].forEach((selector) => {
-
-            document
-                .querySelectorAll(selector)
-                .forEach((group) => {
-
-                    if (
-                        group.getBoundingClientRect().top <=
-                        window.innerHeight * 0.85
-                    ) return;
-
-                    const items = Array
-                        .from(group.children)
-                        .filter((el) => !el.hasAttribute("data-reveal"));
-
-                    if (!items.length) return;
-
-                    items.forEach((item, i) => {
-                        item.classList.add("st-item");
-                        item.style.setProperty("--i", i);
-                    });
-
-                    group.classList.add("stagger-init");
-                    groupObserver.observe(group);
-                });
-        });
-    }
-
-
-    /* EASED ANCHOR SCROLL */
-
-    const easeInOut = (t) =>
-        t < 0.5
-            ? 4 * t * t * t
-            : 1 - Math.pow(-2 * t + 2, 3) / 2;
-
-    document.addEventListener("click", (event) => {
-
-        if (
-            reduceMotion ||
-            event.defaultPrevented ||
-            event.button !== 0 ||
-            event.metaKey ||
-            event.ctrlKey ||
-            event.shiftKey ||
-            event.altKey
-        ) return;
-
-        const link =
-            event.target.closest &&
-            event.target.closest('a[href^="#"]');
-
-        if (!link) return;
-
-        const id = link.getAttribute("href").slice(1);
-        const target = id ? document.getElementById(id) : null;
-
-        if (!target) return;
-
-        event.preventDefault();
-
-        const header = document.querySelector(".site-header");
-        const offset = (header ? header.offsetHeight : 0) + 8;
-
-        const from = window.scrollY;
-        const to = Math.max(
-            0,
-            target.getBoundingClientRect().top + window.scrollY - offset
-        );
-        const distance = to - from;
-
-        const duration = Math.min(
-            1100,
-            Math.max(550, Math.abs(distance) * 0.55)
-        );
-
-        const startTime = performance.now();
-
-        root.style.scrollBehavior = "auto";
-
-        const step = (now) => {
-
-            const progress = Math.min((now - startTime) / duration, 1);
-
-            window.scrollTo(0, from + distance * easeInOut(progress));
-
-            if (progress < 1) {
-                requestAnimationFrame(step);
-            } else {
-                root.style.scrollBehavior = "";
-                history.replaceState(null, "", `#${id}`);
-            }
-        };
-
-        requestAnimationFrame(step);
-    });
-
-});
-
-
-/* =========================================================
-   103. EMAIL BOTTOM SHEET — name + message, composed
-========================================================= */
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    const root = document.documentElement;
-
-    const reduceMotion =
-        window.matchMedia(
-            "(prefers-reduced-motion: reduce)"
-        ).matches;
-
-    const text = {
-        en: {
-            title: "Send a message",
-            name: "Name",
-            namePh: "Your name",
-            message: "Message",
-            messagePh: "Write your message…",
-            send: "Open in email app",
-            copy: "Copy address",
-            copied: "Copied",
-            close: "Close",
-            error: "Please write a message first.",
-            preparing: "Arranging your email…",
-            opening: "Opening your email app",
-            to: "To",
-            subject: "Subject",
-            greeting: "Hello Bijoy,",
-            regards: "Regards,"
-        },
-        bn: {
-            title: "বার্তা পাঠান",
-            name: "নাম",
-            namePh: "আপনার নাম",
-            message: "বার্তা",
-            messagePh: "আপনার বার্তা লিখুন…",
-            send: "ইমেইল অ্যাপে খুলুন",
-            copy: "ঠিকানা কপি করুন",
-            copied: "কপি হয়েছে",
-            close: "বন্ধ করুন",
-            error: "অনুগ্রহ করে আগে একটি বার্তা লিখুন।",
-            preparing: "আপনার ইমেইল সাজানো হচ্ছে…",
-            opening: "ইমেইল অ্যাপ খোলা হচ্ছে",
-            to: "প্রতি",
-            subject: "বিষয়",
-            greeting: "হ্যালো বিজয়,",
-            regards: "শুভেচ্ছান্তে,"
-        }
-    };
-
-    const strings = () =>
-        root.lang === "bn" ? text.bn : text.en;
-
-    let sheet = null;
-    let backdrop = null;
-    let ui = {};
-    let lastFocus = null;
-    let isOpen = false;
-    let busy = false;
-    let copyTimer = null;
-    let mail = { address: "", subject: "" };
-
-    const build = () => {
-
-        backdrop = document.createElement("div");
-        backdrop.className = "sheet-backdrop";
-
-        sheet = document.createElement("div");
-        sheet.className = "sheet";
-        sheet.setAttribute("role", "dialog");
-        sheet.setAttribute("aria-modal", "true");
-        sheet.setAttribute("aria-labelledby", "sheet-title");
-        sheet.tabIndex = -1;
-
-        sheet.innerHTML = `
-            <div class="sheet-head">
-                <span class="sheet-grab" aria-hidden="true"></span>
-                <h2 class="sheet-title" id="sheet-title"></h2>
-                <p class="sheet-address"></p>
-                <button class="sheet-close" type="button">×</button>
-            </div>
-
-            <form class="sheet-form" novalidate>
-                <div class="sheet-field">
-                    <label for="sheet-name"></label>
-                    <input class="sheet-input" id="sheet-name" type="text"
-                        autocomplete="name" enterkeyhint="next">
-                </div>
-                <div class="sheet-field">
-                    <label for="sheet-message"></label>
-                    <textarea class="sheet-input" id="sheet-message"
-                        rows="4"></textarea>
-                </div>
-                <p class="sheet-error" role="alert"></p>
-                <button class="sheet-btn primary" type="submit"></button>
-                <button class="sheet-copy" type="button"></button>
-            </form>
-
-            <div class="sheet-preview" aria-live="polite">
-                <p class="sheet-state"></p>
-                <div class="sheet-mail">
-                    <p><b data-k="to"></b><span class="v-to"></span></p>
-                    <p><b data-k="subject"></b><span class="v-subject"></span></p>
-                    <pre class="v-body"></pre>
-                </div>
-                <div class="sheet-progress"><i></i></div>
-            </div>
-        `;
-
-        document.body.append(backdrop, sheet);
-
-        ui = {
-            head: sheet.querySelector(".sheet-head"),
-            title: sheet.querySelector(".sheet-title"),
-            address: sheet.querySelector(".sheet-address"),
-            close: sheet.querySelector(".sheet-close"),
-            form: sheet.querySelector(".sheet-form"),
-            nameLabel: sheet.querySelector('label[for="sheet-name"]'),
-            name: sheet.querySelector("#sheet-name"),
-            messageLabel: sheet.querySelector('label[for="sheet-message"]'),
-            message: sheet.querySelector("#sheet-message"),
-            error: sheet.querySelector(".sheet-error"),
-            send: sheet.querySelector(".sheet-btn.primary"),
-            copy: sheet.querySelector(".sheet-copy"),
-            state: sheet.querySelector(".sheet-state"),
-            toKey: sheet.querySelector('[data-k="to"]'),
-            subjectKey: sheet.querySelector('[data-k="subject"]'),
-            vTo: sheet.querySelector(".v-to"),
-            vSubject: sheet.querySelector(".v-subject"),
-            vBody: sheet.querySelector(".v-body")
-        };
-
-        backdrop.addEventListener("click", close);
-        ui.close.addEventListener("click", close);
-        ui.copy.addEventListener("click", copyAddress);
-        ui.form.addEventListener("submit", compose);
-
-        ui.name.addEventListener("keydown", (event) => {
-            if (event.key === "Enter") {
-                event.preventDefault();
-                ui.message.focus();
-            }
-        });
-
-        ui.message.addEventListener("keydown", (event) => {
-            if (event.key === "Enter" && (event.ctrlKey || event.metaKey)) {
-                event.preventDefault();
-                compose(event);
-            }
-        });
-
-        ui.message.addEventListener("input", () => {
-            ui.message.classList.remove("is-error");
-            ui.error.textContent = "";
-        });
-
-        sheet.addEventListener("keydown", (event) => {
-
-            if (event.key !== "Tab") return;
-
-            const items = Array.from(
-                sheet.querySelectorAll("a[href], button, input, textarea")
-            ).filter((el) => el.offsetParent !== null);
-
-            if (!items.length) return;
-
-            const first = items[0];
-            const last = items[items.length - 1];
-
-            if (event.shiftKey && document.activeElement === first) {
-                event.preventDefault();
-                last.focus();
-            } else if (!event.shiftKey && document.activeElement === last) {
-                event.preventDefault();
-                first.focus();
-            }
-        });
-
-        /* swipe down to dismiss */
-
-        let startY = null;
-        let delta = 0;
-        let startTime = 0;
-
-        ui.head.addEventListener("pointerdown", (event) => {
-
-            if (event.target.closest(".sheet-close")) return;
-            if (event.pointerType === "mouse" && event.button !== 0) return;
-
-            startY = event.clientY;
-            delta = 0;
-            startTime = performance.now();
-            ui.head.setPointerCapture(event.pointerId);
-            sheet.style.transition = "none";
-        });
-
-        ui.head.addEventListener("pointermove", (event) => {
-
-            if (startY === null) return;
-
-            delta = Math.max(0, event.clientY - startY);
-            sheet.style.transform = `translate(-50%, ${delta}px)`;
-        });
-
-        const release = () => {
-
-            if (startY === null) return;
-
-            const speed = delta / (performance.now() - startTime);
-
-            startY = null;
-            sheet.style.transition = "";
-            sheet.style.transform = "";
-
-            if (delta > 90 || speed > 0.6) close();
-
-            delta = 0;
-        };
-
-        ui.head.addEventListener("pointerup", release);
-        ui.head.addEventListener("pointercancel", release);
-    };
-
-    const fillText = () => {
-
-        const t = strings();
-
-        ui.title.textContent = t.title;
-        ui.address.textContent = mail.address;
-        ui.nameLabel.textContent = t.name;
-        ui.name.placeholder = t.namePh;
-        ui.messageLabel.textContent = t.message;
-        ui.message.placeholder = t.messagePh;
-        ui.send.textContent = t.send;
-        ui.copy.textContent = t.copy;
-        ui.toKey.textContent = t.to;
-        ui.subjectKey.textContent = t.subject;
-        ui.close.setAttribute("aria-label", t.close);
-        ui.close.setAttribute("title", t.close);
-    };
-
-    function copyAddress() {
-
-        const t = strings();
-
-        const done = () => {
-            ui.copy.textContent = t.copied;
-            clearTimeout(copyTimer);
-            copyTimer = setTimeout(() => {
-                ui.copy.textContent = strings().copy;
-            }, 1800);
-        };
-
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(mail.address)
-                .then(done)
-                .catch(() => { });
-            return;
-        }
-
-        const field = document.createElement("textarea");
-        field.value = mail.address;
-        field.style.position = "fixed";
-        field.style.opacity = "0";
-        document.body.appendChild(field);
-        field.select();
-
-        try {
-            document.execCommand("copy");
-            done();
-        } catch (error) { }
-
-        field.remove();
-    }
-
-    function compose(event) {
-
-        event.preventDefault();
-
-        if (busy) return;
-
-        const t = strings();
-        const message = ui.message.value.trim();
-        const name = ui.name.value.trim();
-
-        if (!message) {
-            ui.message.classList.remove("is-error");
-            void ui.message.offsetWidth;
-            ui.message.classList.add("is-error");
-            ui.error.textContent = t.error;
-            ui.message.focus();
-            return;
-        }
-
-        busy = true;
-
-        const subject = name
-            ? `${mail.subject} (${name})`
-            : mail.subject;
-
-        const lines = [t.greeting, "", message];
-
-        if (name) {
-            lines.push("", t.regards, name);
-        }
-
-        const body = lines.join("\r\n");
-
-        const href =
-            `mailto:${mail.address}` +
-            `?subject=${encodeURIComponent(subject)}` +
-            `&body=${encodeURIComponent(body)}`;
-
-        ui.vTo.textContent = mail.address;
-        ui.vSubject.textContent = subject;
-        ui.vBody.textContent = lines.join("\n");
-        ui.state.textContent = t.preparing;
-
-        sheet.classList.add("is-composing");
-
-        const wait = reduceMotion ? 250 : 1300;
-
-        setTimeout(() => {
-
-            ui.state.textContent = t.opening;
-            sheet.classList.add("is-sent");
-
-            window.location.href = href;
-
-            setTimeout(() => {
-                close();
-                setTimeout(reset, 700);
-            }, reduceMotion ? 300 : 1000);
-
-        }, wait);
-    }
-
-    function reset() {
-        sheet.classList.remove("is-composing", "is-sent");
-        ui.message.value = "";
-        ui.message.classList.remove("is-error");
-        ui.error.textContent = "";
-        busy = false;
-    }
-
-    function openSheet(href) {
-
-        if (!sheet) build();
-
-        const [address, query = ""] =
-            href.replace(/^mailto:/i, "").split("?");
-
-        const params = new URLSearchParams(query);
-
-        mail = {
-            address: decodeURIComponent(address),
-            subject:
-                params.get("subject") || "Message from Bijoy Portfolio"
-        };
-
-        fillText();
-
-        lastFocus = document.activeElement;
-        isOpen = true;
-
-        root.classList.add("sheet-lock");
-
-        void sheet.offsetWidth;
-
-        backdrop.classList.add("is-open");
-        sheet.classList.add("is-open");
-
-        setTimeout(() => {
-            if (!busy) ui.name.focus({ preventScroll: true });
-        }, 420);
-    }
-
-    function close() {
-
-        if (!isOpen) return;
-
-        isOpen = false;
-
-        backdrop.classList.remove("is-open");
-        sheet.classList.remove("is-open");
-        root.classList.remove("sheet-lock");
-
-        if (lastFocus && lastFocus.focus) {
-            lastFocus.focus({ preventScroll: true });
-        }
-    }
-
-    document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") close();
-    });
-
-    document.addEventListener("click", (event) => {
-
-        const link =
-            event.target.closest &&
-            event.target.closest('a[href^="mailto:"]');
-
-        if (!link || link.closest(".sheet")) return;
-
-        event.preventDefault();
-        openSheet(link.getAttribute("href"));
-
-    }, true);
-
-});
-
-
-/* =========================================================
-   104. SKELETONS + DRAMATIC REVEALS + WORD REVEAL
-========================================================= */
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    const root = document.documentElement;
-
-    const reduceMotion =
-        window.matchMedia(
-            "(prefers-reduced-motion: reduce)"
-        ).matches;
-
-
-    /* IMAGE SKELETONS */
-
-    document.querySelectorAll("img").forEach((img) => {
-
-        if (img.closest(".lightbox, .lightbox-image-wrap")) return;
-        if (img.complete && img.naturalWidth > 0) return;
-
-        const box =
-            img.closest(
-                ".profile-frame-inner, .art-image-frame, " +
-                ".education-image, .institution-logo, .art-image"
-            ) || img.parentElement;
-
-        if (!box) return;
-
-        box.classList.add("sk-loading");
-
-        const finish = () => {
-            box.classList.remove("sk-loading");
-            box.classList.add("sk-done");
-        };
-
-        img.addEventListener("load", finish, { once: true });
-        img.addEventListener("error", finish, { once: true });
-    });
-
-
-    /* PAGE SKELETON — only if loading is genuinely slow */
-
-    if (document.readyState !== "complete") {
-
-        let page = null;
-
-        const removePage = () => {
-
-            if (!page) return;
-
-            const node = page;
-            page = null;
-
-            node.classList.add("is-out");
-            setTimeout(() => node.remove(), 650);
-        };
-
-        setTimeout(() => {
-
-            if (document.readyState === "complete") return;
-
-            page = document.createElement("div");
-            page.className = "sk-page";
-            page.setAttribute("aria-hidden", "true");
-
-            page.innerHTML = `
-                <div class="sk-header">
-                    <span class="sk" style="width:120px;height:22px"></span>
-                    <span class="sk" style="width:64px;height:22px;margin-left:auto"></span>
-                    <span class="sk" style="width:64px;height:22px"></span>
-                </div>
-                <div class="sk-grid">
-                    <div class="sk-col">
-                        <span class="sk" style="width:200px;height:14px"></span>
-                        <span class="sk" style="width:92%;height:58px"></span>
-                        <span class="sk" style="width:64%;height:58px"></span>
-                        <span class="sk" style="width:70%;height:20px;margin-top:10px"></span>
-                        <span class="sk" style="width:100%;height:14px"></span>
-                        <span class="sk" style="width:88%;height:14px"></span>
-                        <span class="sk" style="width:46%;height:14px"></span>
                     </div>
-                    <span class="sk sk-photo"></span>
+
+
+                    <h1 class="hero-name">
+
+                        <span class="name-first">
+                            Sarefull
+                        </span>
+
+                        <span class="name-last">
+                            Islam Bijoy<span class="name-dot">.</span>
+                        </span>
+
+                    </h1>
+
+
+                    <p
+                        class="hero-statement"
+                        data-en="Different in identity, connected in humanity."
+                        data-bn="পরিচয়ে স্বতন্ত্র, মানবতায় সংযুক্ত।"
+                    >
+                        Different in identity,
+                        connected in humanity.
+                    </p>
+
+
+                    <p
+                        class="hero-description"
+                        data-en="A student &amp; traditional artist exploring creativity, technology, languages &amp; continuous learning."
+                        data-bn="একজন শিক্ষার্থী ও শিল্পী হিসেবে সৃজনশীলতা, প্রযুক্তি, ভাষা ও ধারাবাহিক শেখার পথে এগিয়ে চলছি।"
+                    >
+                        A student &amp; traditional artist
+                        exploring creativity, technology,
+                        languages &amp; continuous learning.
+                    </p>
+
+
+                    <div class="hero-meta">
+
+                        <span>
+                            Student
+                        </span>
+
+                       <span
+                            class="meta-divider"
+                            aria-hidden="true"
+                        >
+                            /
+                        </span>
+
+                        <span>
+                            Traditional Artist
+                        </span>
+
+                        <span
+                            class="meta-divider"
+                            aria-hidden="true"
+                        >
+                            /
+                        </span>
+
+                        <span>
+                            Bangladesh
+                        </span>
+
+                    </div>
+
                 </div>
-            `;
 
-            document.body.appendChild(page);
 
-        }, 160);
 
-        window.addEventListener("load", removePage, { once: true });
-        setTimeout(removePage, 2600);
-    }
+                <!-- HERO IMAGE -->
 
+                <div
+                    class="hero-visual"
+                    data-reveal
+                >
 
-    /* WORD-BY-WORD TITLES */
+                    <div
+                        class="hero-circle circle-one"
+                        aria-hidden="true"
+                    ></div>
 
-    const titles = Array.from(
-        document.querySelectorAll(
-            ".section-title, .education-hero h1, " +
-            ".art-hero h1, .gallery-header h2"
-        )
-    );
+                    <div
+                        class="hero-circle circle-two"
+                        aria-hidden="true"
+                    ></div>
 
-    const split = (title) => {
+                    <div
+                        class="hero-line line-one"
+                        aria-hidden="true"
+                    ></div>
 
-        const words =
-            title.textContent.trim().split(/\s+/);
+                    <div
+                        class="hero-line line-two"
+                        aria-hidden="true"
+                    ></div>
 
-        title.textContent = "";
 
-        words.forEach((word, i) => {
+                    <div class="profile-frame">
 
-            const outer = document.createElement("span");
-            const inner = document.createElement("span");
+                        <div class="profile-frame-inner">
 
-            outer.className = "w";
-            inner.className = "wi";
-            inner.style.setProperty("--wi", i);
-            inner.textContent = word;
+                            <img width="1100" height="1326" decoding="async" fetchpriority="high"
+                                src="profile.jpg"
+                                alt="Sarefull Islam Bijoy"
+                            >
 
-            outer.appendChild(inner);
-            title.appendChild(outer);
-            title.appendChild(document.createTextNode(" "));
-        });
-    };
+                        </div>
 
-    if (titles.length && !reduceMotion) {
+                    </div>
 
-        const shown = new WeakSet();
 
-        const titleObserver =
-            "IntersectionObserver" in window
-                ? new IntersectionObserver(
-                    (entries) => {
-                        entries.forEach((entry) => {
-                            if (entry.isIntersecting) {
-                                entry.target.classList.add("is-in");
-                                shown.add(entry.target);
-                                titleObserver.unobserve(entry.target);
-                            }
-                        });
-                    },
-                    { threshold: 0.4 }
-                )
-                : null;
+                    <div class="profile-label label-top">
 
-        titles.forEach((title) => {
+                        <span
+                            class="label-dot"
+                            aria-hidden="true"
+                        ></span>
 
-            title.classList.add("split-title");
-            split(title);
+                        <span>
+                            Traditional Artist
+                        </span>
 
-            /* language swap rewrites the text — split it again */
+                    </div>
 
-            new MutationObserver(() => {
 
-                if (title.querySelector(".w")) return;
+                    <div class="profile-label label-bottom">
 
-                split(title);
+                        <span>
+                            Learning in progress
+                        </span>
 
-                if (shown.has(title)) {
-                    title.classList.add("is-in");
-                }
+                        <span
+                            class="label-arrow"
+                            aria-hidden="true"
+                        >
+                            ↗
+                        </span>
 
-            }).observe(title, { childList: true });
+                    </div>
 
-            if (titleObserver) {
-                titleObserver.observe(title);
-            } else {
-                title.classList.add("is-in");
-            }
-        });
-    }
+                </div>
 
-});
+            </div>
 
 
-/* =========================================================
-   105. EDUCATION + ART PAGES
-========================================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
+            <div class="interest-track">
 
-    const reduceMotion =
-        window.matchMedia(
-            "(prefers-reduced-motion: reduce)"
-        ).matches;
+    <!-- FIRST SET -->
+    <span>ART</span>
+    <i aria-hidden="true">✦</i>
 
-    const canHover =
-        window.matchMedia(
-            "(hover: hover)"
-        ).matches;
+    <span>CREATIVITY</span>
+    <i aria-hidden="true">✦</i>
 
+    <span>TECHNOLOGY</span>
+    <i aria-hidden="true">✦</i>
 
-    /* EDUCATION — scroll-drawn timeline line */
+    <span>LEARNING</span>
+    <i aria-hidden="true">✦</i>
 
-    const list = document.querySelector(".education-list");
+    <span>LANGUAGES</span>
+    <i aria-hidden="true">✦</i>
 
-    if (list) {
+    <span>EXPLORATION</span>
+    <i aria-hidden="true">✦</i>
 
-        let pending = false;
 
-        const draw = () => {
+    <!-- SECOND SET -->
+    <span>ART</span>
+    <i aria-hidden="true">✦</i>
 
-            const box = list.getBoundingClientRect();
+    <span>CREATIVITY</span>
+    <i aria-hidden="true">✦</i>
 
-            const progress = Math.min(
-                1,
-                Math.max(
-                    0,
-                    (window.innerHeight * 0.6 - box.top) / box.height
-                )
-            );
+    <span>TECHNOLOGY</span>
+    <i aria-hidden="true">✦</i>
 
-            list.style.setProperty("--p", progress.toFixed(3));
-            pending = false;
-        };
+    <span>LEARNING</span>
+    <i aria-hidden="true">✦</i>
 
-        const queue = () => {
-            if (pending) return;
-            pending = true;
-            requestAnimationFrame(draw);
-        };
+    <span>LANGUAGES</span>
+    <i aria-hidden="true">✦</i>
 
-        window.addEventListener("scroll", queue, { passive: true });
-        window.addEventListener("resize", queue);
-        draw();
-    }
+    <span>EXPLORATION</span>
+    <i aria-hidden="true">✦</i>
 
+</div>
 
-    /* ART — gentle 3D tilt */
 
-    if (canHover && !reduceMotion) {
+        </section>
 
-        document.querySelectorAll(".art-item").forEach((item) => {
+        <!-- =================================================
+             ABOUT
+        ================================================== -->
 
-            const frame = item.querySelector(".art-image");
+        <section
+            id="about"
+            class="section about-section"
+        >
 
-            if (!frame) return;
+            <div class="container">
 
-            item.addEventListener("pointermove", (event) => {
+                <div class="section-topline">
 
-                const box = frame.getBoundingClientRect();
-                const x = (event.clientX - box.left) / box.width - 0.5;
-                const y = (event.clientY - box.top) / box.height - 0.5;
+                    <span class="section-number">
+                        i
+                    </span>
 
-                frame.style.setProperty("--ry", `${(x * 7).toFixed(2)}deg`);
-                frame.style.setProperty("--rx", `${(-y * 7).toFixed(2)}deg`);
-            });
+                    <span
+                        class="section-label"
+                        data-en="About me"
+                        data-bn="আমার সম্পর্কে"
+                    >
+                        About me
+                    </span>
 
-            item.addEventListener("pointerleave", () => {
-                frame.style.setProperty("--rx", "0deg");
-                frame.style.setProperty("--ry", "0deg");
-            });
-        });
-    }
+                </div>
 
-});
 
+                <div
+                    class="about-layout"
+                    data-reveal
+                >
 
-/* =========================================================
-   106. NAVIGATION ANIMATION — sliding hover indicator
-========================================================= */
+                    <div class="about-main">
 
-document.addEventListener("DOMContentLoaded", () => {
+                        <h2
+                            class="section-title"
+                            data-en="Growing through art, learning &amp; curiosity."
+                            data-bn="শিল্প, শিক্ষা ও কৌতূহলের মধ্য দিয়ে বেড়ে ওঠা।"
+                        >
+                            Growing through art,
+                            learning &amp; curiosity.
+                        </h2>
 
-    const nav = document.querySelector(".site-nav");
+                    </div>
 
-    if (!nav) return;
 
-    const links = Array.from(nav.querySelectorAll(".nav-link"));
+                    <div class="about-copy">
 
-    links.forEach((link, i) => link.style.setProperty("--ni", i));
+                        <p
+                            class="lead-text"
+                            data-en="I am a student and traditional artist building my path through continuous learning and creative exploration."
+                            data-bn="আমি একজন শিক্ষার্থী ও শিল্পী ধারাবাহিক শেখা ও সৃজনশীল অনুসন্ধানের মধ্য দিয়ে নিজের পথ তৈরি করছি।"
+                        >
+                            I am a student and traditional
+                            artist building my path through
+                            continuous learning and creative
+                            exploration.
+                        </p>
 
-    const indicator = document.createElement("span");
-    indicator.className = "nav-indicator";
-    indicator.setAttribute("aria-hidden", "true");
-    nav.prepend(indicator);
 
-    const desktop = window.matchMedia("(min-width: 761px)");
+                        <p
+                            data-en="My interests move between art, technology, languages and education. I enjoy understanding how things work, practising what I learn and turning ideas into something real."
+                            data-bn="আমার আগ্রহ শিল্প, প্রযুক্তি, ভাষা ও শিক্ষার বিভিন্ন ক্ষেত্রকে ঘিরে। কোনো বিষয় কীভাবে কাজ করে তা বোঝা, শেখা বিষয় অনুশীলন করা এবং ভাবনাকে বাস্তব কিছুতে রূপ দিতে আমি আগ্রহী।"
+                        >
+                            My interests move between art,
+                            technology, languages and education.
+                            I enjoy understanding how things work,
+                            practising what I learn and turning
+                            ideas into something real.
+                        </p>
 
-    const moveTo = (link) => {
+                    </div>
 
-        if (!link || !desktop.matches) {
-            if (indicator.classList.contains("is-on")) {
-                indicator.classList.remove("is-on");
-            }
-            return;
-        }
+                </div>
 
-        indicator.style.setProperty("--nx", `${link.offsetLeft}px`);
-        indicator.style.setProperty("--nw", `${link.offsetWidth}px`);
+            </div>
 
-        if (!indicator.classList.contains("is-on")) {
-            indicator.classList.add("is-on");
-        }
-    };
+        </section>
 
-    const current = () =>
-        nav.querySelector(".nav-link.active") ||
-        nav.querySelector('.nav-link[aria-current="page"]');
 
-    links.forEach((link) => {
-        link.addEventListener("pointerenter", () => moveTo(link));
-        link.addEventListener("focus", () => moveTo(link));
-    });
 
-    nav.addEventListener("pointerleave", () => moveTo(current()));
-    nav.addEventListener("focusout", () => moveTo(current()));
+        <!-- =================================================
+             EDUCATION TIMELINE
+             SHORT VERSION — FULL DETAILS IN education.html
+        ================================================== -->
 
-    new MutationObserver((records) => {
+        <section
+            id="education"
+            class="section education-home-section"
+        >
 
-        /* ignore the indicator's own class changes (would loop forever) */
+            <div class="container">
 
-        if (records.every((r) => r.target === indicator)) return;
+                <div class="section-topline">
 
-        if (!nav.matches(":hover")) moveTo(current());
+                    <span class="section-number">
+                        ii
+                    </span>
 
-    }).observe(nav, {
-        subtree: true,
-        attributes: true,
-        attributeFilter: ["class"]
-    });
+                    <span
+                        class="section-label"
+                        data-en="Education journey"
+                        data-bn="শিক্ষার যাত্রা"
+                    >
+                        Education journey
+                    </span>
 
-    window.addEventListener("resize", () => moveTo(current()));
+                </div>
 
-    if (document.fonts && document.fonts.ready) {
-        document.fonts.ready.then(() => moveTo(current()));
-    }
 
-    moveTo(current());
-});
+                <div
+                    class="section-heading-row"
+                    data-reveal
+                >
+
+                    <div>
+
+                        <h2
+                            class="section-title"
+                            data-en="A journey that keeps moving."
+                            data-bn="একটি চলমান শেখার যাত্রা।"
+                        >
+                            A journey that
+                            keeps moving.
+                        </h2>
+
+                    </div>
+
+
+                    <p
+                        class="section-description"
+                        data-en="A quick view of the stages that shaped my educational journey."
+                        data-bn="আমার শিক্ষার যাত্রাকে গড়ে তোলা ধাপগুলোর একটি সংক্ষিপ্ত চিত্র।"
+                    >
+                        A quick view of the stages
+                        that shaped my educational journey.
+                    </p>
+
+                </div>
+
+
+
+                <!-- TIMELINE -->
+
+                <div
+                    class="education-timeline"
+                    data-reveal
+                >
+
+
+                    <!-- 2019 -->
+
+                    <article class="timeline-item">
+
+                        <div class="timeline-marker">
+                            2019
+                        </div>
+
+                        <div class="timeline-content">
+
+                            <span
+                                class="timeline-status"
+                                data-en="COMPLETED"
+                                data-bn="সম্পন্ন"
+                            >
+                                COMPLETED
+                            </span>
+
+                            <h3
+                                data-en="Primary Education"
+                                data-bn="প্রাথমিক শিক্ষা"
+                            >
+                                Primary Education
+                            </h3>
+
+                            <p>
+                                Chakbazar Government
+                                Primary School
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- 2025 -->
+
+                    <article class="timeline-item">
+
+                        <div class="timeline-marker">
+                            2025
+                        </div>
+
+                        <div class="timeline-content">
+
+                            <span
+                                class="timeline-status"
+                                data-en="SSC COMPLETED"
+                                data-bn="এসএসসি সম্পন্ন"
+                            >
+                                SSC COMPLETED
+                            </span>
+
+                            <h3
+                                data-en="Secondary Education"
+                                data-bn="মাধ্যমিক শিক্ষা"
+                            >
+                                Secondary Education
+                            </h3>
+
+                            <p>
+                                Cumilla High School,
+                                Cumilla
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- 2026 -->
+
+                    <article
+                        class="timeline-item current"
+                    >
+
+                        <div class="timeline-marker">
+                            2026
+                        </div>
+
+                        <div class="timeline-content">
+
+                            <span
+                                class="timeline-status current"
+                                data-en="CURRENT"
+                                data-bn="বর্তমান"
+                            >
+                                CURRENT
+                            </span>
+
+                            <h3
+                                data-en="College Education"
+                                data-bn="কলেজ শিক্ষা"
+                            >
+                                College Education
+                            </h3>
+
+                            <p>
+                                Bhasha Sainik
+                                Ajit Guha College
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+
+                <div class="section-action">
+
+                    <a
+                        href="education.html"
+                        class="text-link page-link"
+                    >
+
+                        <span
+                            data-en="View full Education Journey"
+                            data-bn="সম্পূর্ণ শিক্ষার যাত্রা দেখুন"
+                        >
+                            View full Education Journey
+                        </span>
+
+                        <span aria-hidden="true">
+                            ↗
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ART FEATURE
+        ================================================== -->
+
+        <section
+            id="art"
+            class="section home-art-section"
+        >
+
+            <div class="container">
+
+                <div class="section-topline">
+
+                    <span class="section-number">
+                        iii
+                    </span>
+
+                    <span
+                        class="section-label"
+                        data-en="Featured art"
+                        data-bn="নির্বাচিত শিল্পকর্ম"
+                    >
+                        Featured art
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="home-art-feature"
+                    data-reveal
+                >
+
+                    <div class="home-art-visual">
+
+                        <figure class="art-image-frame">
+
+                            <img width="2248" height="2810" decoding="async"
+                                src="art4.jpg"
+                                alt="Featured traditional artwork by Sarefull Islam Bijoy"
+                                loading="lazy"
+                            >
+
+                        </figure>
+
+                        <span class="art-image-index">
+                            01 / ART
+                        </span>
+
+                    </div>
+
+
+                    <div class="home-art-info">
+
+                        <span class="artwork-category">
+                            TRADITIONAL ART
+                        </span>
+
+
+                        <h2
+                            data-en="Creating is another way of learning."
+                            data-bn="সৃষ্টিও শেখার আরেকটি পথ।"
+                        >
+                            Creating is another
+                            way of learning.
+                        </h2>
+
+
+                        <p
+                            data-en="art gives me a space to observe, practise and express ideas visually."
+                            data-bn="শিল্প আমাকে পর্যবেক্ষণ, অনুশীলন এবং ভাবনাকে দৃশ্যমানভাবে প্রকাশ করার সুযোগ দেয়।"
+                        >
+                            art gives me a space
+                            to observe, practise and express
+                            ideas visually.
+                        </p>
+
+
+                        <a
+                            href="art.html"
+                            class="text-link page-link"
+                        >
+
+                            <span
+                                data-en="Explore Art Gallery"
+                                data-bn="শিল্পকর্ম দেখুন"
+                            >
+                                Explore Art Gallery
+                            </span>
+
+                            <span aria-hidden="true">
+                                ↗
+                            </span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SKILLS & INTERESTS
+        ================================================== -->
+
+        <section
+            id="skills"
+            class="section skills-section"
+        >
+
+            <div class="container">
+
+                <div class="section-topline">
+
+                    <span class="section-number">
+                        iv
+                    </span>
+
+                    <span
+                        class="section-label"
+                        data-en="Skills &amp; interests"
+                        data-bn="দক্ষতা ও আগ্রহ"
+                    >
+                        Skills &amp; interests
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="section-heading-row"
+                    data-reveal
+                >
+
+                    <h2
+                        class="section-title"
+                        data-en="What I am learning."
+                        data-bn="যেগুলো শিখছি।"
+                    >
+                        What I am learning.
+                    </h2>
+
+
+                    <p
+                        class="section-description"
+                        data-en="A growing collection of skills shaped by study, curiosity and practice."
+                        data-bn="পড়াশোনা, কৌতূহল ও অনুশীলনের মাধ্যমে গড়ে ওঠা আমার ক্রমবর্ধমান দক্ষতাগুলো।"
+                    >
+                        A growing collection of skills
+                        shaped by study, curiosity and practice.
+                    </p>
+
+                </div>
+
+
+
+                <div
+                    class="skills-grid"
+                    data-reveal
+                >
+
+
+                    <article class="skill-card">
+
+                        <span class="skill-number">
+                            01
+                        </span>
+
+                        <div class="skill-card-content">
+
+                            <span class="skill-category">
+                                TECHNOLOGY
+                            </span>
+
+                            <h3>
+                                HTML
+                            </h3>
+
+                            <p
+                                data-en="Building a strong foundation in semantic HTML and structured web pages."
+                                data-bn="Semantic HTML ও সুসংগঠিত web page তৈরির ভিত্তি শক্ত করছি।"
+                            >
+                                Building a strong foundation
+                                in semantic HTML and structured
+                                web pages.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <article class="skill-card">
+
+                        <span class="skill-number">
+                            02
+                        </span>
+
+                        <div class="skill-card-content">
+
+                            <span class="skill-category">
+                                CREATIVE
+                            </span>
+
+                            <h3
+                                data-en="Traditional Art"
+                                data-bn="অঙ্কন"
+                            >
+                                Traditional Art
+                            </h3>
+
+                            <p
+                                data-en="Practising drawing, observation, form and visual expression through traditional methods."
+                                data-bn="আঁকা, পর্যবেক্ষণ, গঠন ও দৃশ্যমান প্রকাশের অনুশীলন করছি।"
+                            >
+                                Practising drawing,
+                                observation, form and visual
+                                expression through traditional
+                                methods.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <article class="skill-card">
+
+                        <span class="skill-number">
+                            03
+                        </span>
+
+                        <div class="skill-card-content">
+
+                            <span class="skill-category">
+                                LANGUAGE
+                            </span>
+
+                            <h3>
+                                English
+                            </h3>
+
+                            <p
+                                data-en="Improving vocabulary, grammar, communication and practical language use."
+                                data-bn="শব্দভাণ্ডার, ব্যাকরণ, যোগাযোগ ও বাস্তব ভাষা ব্যবহারের দক্ষতা বাড়াচ্ছি।"
+                            >
+                                Improving vocabulary,
+                                grammar, communication and
+                                practical language use.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <article class="skill-card">
+
+                        <span class="skill-number">
+                            04
+                        </span>
+
+                        <div class="skill-card-content">
+
+                            <span class="skill-category">
+                                WORKFLOW
+                            </span>
+
+                            <h3>
+                                Git &amp; GitHub
+                            </h3>
+
+                            <p
+                                data-en="Learning version control, repositories and practical project workflow."
+                                data-bn="Version control, repository ও practical project workflow সম্পর্কে শিখছি।"
+                            >
+                                Learning version control,
+                                repositories and practical
+                                project workflow.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+                <!-- =================================================
+             PROJECTS
+        ================================================== -->
+
+        <section
+            id="projects"
+            class="section projects-section"
+        >
+
+            <div class="container">
+
+                <div class="section-topline">
+                    <span class="section-number">
+                        v
+                    </span>
+                    <span
+                        class="section-label"
+                        data-en="Projects"
+                        data-bn="প্রজেক্ট"
+                    >
+                        Projects
+                    </span>
+                </div>
+
+                <div
+                    class="section-heading-row"
+                    data-reveal
+                >
+                    <h2
+                        class="section-title"
+                        data-en="Ideas taking shape."
+                        data-bn="রূপ নিচ্ছে ধারণাগুলো।"
+                    >
+                        Ideas taking shape.
+                    </h2>
+
+                    <p
+                        class="section-description"
+                        data-en="What I am planning and building."
+                        data-bn="আমি যা পরিকল্পনা ও তৈরি করছি।"
+                    >
+                        What I am planning and building.
+                    </p>
+                </div>
+
+                <div class="projects-grid" data-reveal>
+
+                    <a
+                        class="project-card"
+                        href="https://bijoyb19818686-islam.github.io/history-timeline/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <span
+                            class="project-status status-idea"
+                            data-en="Idea"
+                            data-bn="ধারণা"
+                        >Idea</span>
+
+                        <h3 class="project-title">History Timeline</h3>
+
+                        <span class="project-url">bijoyb19818686-islam.github.io/history-timeline</span>
+
+                        <span class="project-open">
+                            <span
+                                data-en="Open project"
+                                data-bn="প্রজেক্ট দেখুন"
+                            >Open project</span>
+                            <span aria-hidden="true">↗</span>
+                        </span>
+                    </a>
+                    <a
+                        class="project-card"
+                        href="https://sarefullbijoy.github.io/rongsuta-shanto/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <span
+                            class="project-status status-soon"
+                            data-en="Coming soon"
+                            data-bn="শীঘ্রই আসছে"
+                        >Coming soon</span>
+
+                        <h3 class="project-title">Rongsuta Shanto</h3>
+
+                        <span class="project-url">sarefullbijoy.github.io/rongsuta-shanto</span>
+
+                        <span class="project-open">
+                            <span
+                                data-en="Open project"
+                                data-bn="প্রজেক্ট দেখুন"
+                            >Open project</span>
+                            <span aria-hidden="true">↗</span>
+                        </span>
+                    </a>
+
+                </div>
+
+                <div class="projects-more">
+                    <a
+                        href="project.html"
+                        class="text-link page-link"
+                    >
+                        <span
+                            data-en="View all projects"
+                            data-bn="সব প্রজেক্ট দেখুন"
+                        >
+                            View all projects
+                        </span>
+                        <span aria-hidden="true">↗</span>
+                    </a>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             PHILOSOPHY / THOUGHTS
+        ====================================================== -->
+
+        <section class="philosophy-section">
+
+            <div class="container">
+
+                <div class="section-topline">
+
+                    <span class="section-number">
+                        vi
+                    </span>
+
+                    <span
+                        class="section-label"
+                        data-en="PHILOSOPHY"
+                        data-bn="জীবনভাবনা"
+                    >
+                        PHILOSOPHY
+                    </span>
+
+                </div>
+
+
+                <div class="philosophy-grid">
+
+
+                    <!-- QUOTE 01 -->
+
+                    <blockquote
+                        class="philosophy-card"
+                        data-reveal
+                    >
+
+                        <p
+                            data-en="The best of people are those who are most beneficial to others."
+                            data-bn="মানুষের মধ্যে শ্রেষ্ঠ তারা, যারা অন্যের জন্য সবচেয়ে বেশি কল্যাণ বয়ে আনে।"
+                        >
+                            The best of people are those who are most beneficial
+                            to others.
+                        </p>
+
+
+                        <footer>
+
+                            <cite
+                                data-en="Prophet Muhammad ﷺ"
+                                data-bn="মুহাম্মদ ﷺ"
+                            >
+                                Prophet Muhammad ﷺ
+                            </cite>
+
+                        </footer>
+
+                    </blockquote>
+
+
+
+                    <!-- QUOTE 02 -->
+
+                    <blockquote
+                        class="philosophy-card"
+                        data-reveal
+                    >
+
+                        <p
+                            data-en="Be the change you wish to see in the world."
+                            data-bn="পৃথিবীতে যে পরিবর্তন দেখতে চাও, সেই পরিবর্তনের শুরুটা নিজের মধ্যেই ঘটাও।"
+                        >
+                            Be the change you wish to see in the world.
+                        </p>
+
+
+                        <footer>
+
+                            <cite>
+                                <span
+                                    data-en="— Mahatma Gandhi"
+                                    data-bn="— মহাত্মা গান্ধী"
+                                >
+                                    — Mahatma Gandhi
+                                </span>
+
+                            </cite>
+
+                        </footer>
+
+                    </blockquote>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =================================================
+             CONTACT / SOCIAL
+        ================================================== -->
+
+        <section
+            id="contact"
+            class="section contact-section"
+        >
+
+            <div class="container">
+
+                <div
+                    class="contact-block"
+                    data-reveal
+                >
+
+                    <span
+                        class="section-label"
+                        data-en="Connect"
+                        data-bn="যোগাযোগ"
+                    >
+                        Connect
+                    </span>
+
+
+                    <h2
+                        data-en="Follow the journey."
+                        data-bn="এই যাত্রার সঙ্গে থাকুন।"
+                    >
+                        Follow the journey.
+                    </h2>
+
+
+                    <p
+                        data-en="Explore my work, projects and creative journey."
+                        data-bn="আমার কাজ, project এবং সৃজনশীল যাত্রা দেখুন।"
+                    >
+                        Explore my work, projects
+                        and creative journey.
+                    </p>
+
+
+                    <div class="social-links">
+
+
+                        <!-- FACEBOOK -->
+
+                        <a
+                            href="https://www.facebook.com/share/1EvYWFP8cn/"
+                            class="social-link"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Facebook"
+                        >
+
+                            <span
+                                class="social-icon"
+                                aria-hidden="true"
+                            >
+                                f
+                            </span>
+
+                            <span>
+                                Facebook
+                            </span>
+
+                        </a>
+
+
+
+                        <!-- GITHUB -->
+
+                        <a
+                            href="https://github.com/sarefullbijoy"
+                            class="social-link"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="GitHub"
+                        >
+
+                            <span
+                                class="social-icon"
+                                aria-hidden="true"
+                            >
+                                GH
+                            </span>
+
+                            <span>
+                                GitHub
+                            </span>
+
+                        </a>
+
+
+                <!-- EMAIL -->
+
+<a
+    href="mailto:bijoy152883@gmail.com?subject=Message%20from%20Bijoy%20Portfolio"
+    class="social-link"
+    aria-label="Email"
+>
+
+    <span
+        class="social-icon"
+        aria-hidden="true"
+    >
+        @
+    </span>
+
+    <span>
+        Email
+    </span>
+
+</a>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+</main>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="site-footer">
+
+        <div class="container footer-inner">
+
+            <p
+                data-en="© 2026 Sarefull Islam Bijoy. All rights reserved."
+                data-bn="© ২০২৬ Sarefull Islam Bijoy. সর্বস্বত্ব সংরক্ষিত।"
+            >
+                © 2026 Sarefull Islam Bijoy.
+                All rights reserved.
+            </p>
+
+
+            <p>
+                Student • Artist • Lifelong Learner
+            </p>
+            
+            <p>Fluidity — v26.U3.5 </p>
+
+        </div>
+
+    </footer>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
